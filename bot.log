@@ -583,3 +583,27 @@
 2026-07-09 22:43:12,226 - logger - INFO - ImageExecutor: картинка отправлена пользователю
 2026-07-09 22:43:12,226 - logger - INFO - ✅ _generate_and_send_image() завершена за 36.534с
 2026-07-09 22:43:12,226 - logger - INFO - TaskQueue: воркер Worker-1 завершил image для 270319180
+2026-07-09 22:43:26,348 - logger - INFO - ➡️ Вход в load_db()
+2026-07-09 22:43:26,350 - logger - INFO - ✅ load_db() завершена за 0.001с
+2026-07-09 22:43:26,350 - logger - INFO - База данных загружена
+2026-07-09 22:43:26,350 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:43:26,351 - logger - INFO - ✅ save_db() завершена за 0.001с
+2026-07-09 22:43:26,352 - logger - INFO - Дублирующиеся цели очищены
+2026-07-09 22:43:26,352 - logger - INFO - Middleware защиты от спама подключён
+2026-07-09 22:43:26,352 - logger - INFO - Хендлеры зарегистрированы
+2026-07-09 22:43:26,352 - logger - INFO - TaskQueue: запущено 2 воркеров
+2026-07-09 22:43:26,352 - logger - INFO - TaskQueue запущена
+2026-07-09 22:43:26,352 - logger - INFO - AlertChecker запущен
+2026-07-09 22:43:26,352 - logger - INFO - Бот запущен
+2026-07-09 22:43:26,352 - aiogram.dispatcher - INFO - Start polling
+2026-07-09 22:43:26,352 - logger - INFO - TaskQueue: воркер Worker-1 запущен
+2026-07-09 22:43:26,352 - logger - INFO - TaskQueue: воркер Worker-2 запущен
+2026-07-09 22:43:26,584 - aiogram.dispatcher - INFO - Run polling for bot @CrazyRoot_bot id=8646365702 - 'CrazyLittleThingCalledLove'
+2026-07-09 22:43:31,353 - logger - INFO - AlertChecker запущен
+2026-07-09 22:43:34,492 - logger - INFO - Пользователь 270319180 начал опрос
+2026-07-09 22:43:34,492 - aiogram.event - INFO - Update id=778791307 is handled. Duration 202 ms by bot id=8646365702
+2026-07-09 22:43:44,710 - aiogram.event - INFO - Update id=778791308 is handled. Duration 140 ms by bot id=8646365702
+2026-07-09 22:43:47,246 - logger - INFO - Пользователь 270319180 отменил опрос через кнопку
+2026-07-09 22:43:47,246 - aiogram.event - INFO - Update id=778791309 is handled. Duration 186 ms by bot id=8646365702
+2026-07-09 22:44:31,344 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:44:31,345 - logger - INFO - ✅ get_user() завершена за 0.000с
