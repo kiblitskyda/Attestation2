@@ -13,10 +13,8 @@ from datetime import datetime, timedelta
 from typing import Dict, Any, List, Optional
 
 from config import DB_FILE, MAX_CONTEXT_MESSAGES, RATE_LIMIT_MESSAGES_PER_HOUR
-from logger import log_function_call
+from logger import log_function_call, log_info, log_error, log_warning
 from models.user import User
-from logger import log_info, log_error, log_warning
-
 
 
 # Основное хранилище данных в памяти
@@ -35,11 +33,21 @@ def load_db():
     try:
         with open(DB_FILE, "r", encoding="utf-8") as f:
             raw_data = json.load(f)
+
+            # Загружаем пользователей
             users_db = {
                 int(user_id): User.from_dict(user_data)
                 for user_id, user_data in raw_data.get("users", {}).items()
             }
-            rate_limit_db = raw_data.get("rate_limits", {})
+
+            # Загружаем лимиты, удаляя дублирующиеся ключи
+            raw_limits = raw_data.get("rate_limits", {})
+            rate_limit_db = {}
+            for user_id, data in raw_limits.items():
+                # Если ключ уже есть — пропускаем (оставляем только первое вхождение)
+                if user_id not in rate_limit_db:
+                    rate_limit_db[user_id] = data
+
     except FileNotFoundError:
         users_db = {}
         rate_limit_db = {}
@@ -149,6 +157,7 @@ def check_rate_limit(user_id: int) -> bool:
     save_db()
     return True
 
+
 # --- ЦЕЛИ ДЛЯ УВЕДОМЛЕНИЙ ---
 
 def add_alert(user_id: int, item: str, target: float, alert_type: str = "crypto") -> None:
@@ -172,16 +181,18 @@ def add_alert(user_id: int, item: str, target: float, alert_type: str = "crypto"
     log_info(f"Добавлена цель для {user_id}: {item} = {target} ({alert_type})")
 
 
-def get_active_alerts(user_id: int) -> list:
+def get_active_alerts(user_id: int) -> List[Dict[str, Any]]:
     """Возвращает список активных целей пользователя."""
     user = get_user(user_id)
     return [alert for alert in user.alerts if alert.get("active", True)]
 
 
 def deactivate_alert(user_id: int, alert_index: int):
-    """Деактивирует цель."""
+    """Деактивирует цель по индексу."""
     user = get_user(user_id)
     if 0 <= alert_index < len(user.alerts):
         user.alerts[alert_index]["active"] = False
         save_db()
         log_info(f"Деактивирована цель для {user_id}: индекс {alert_index}")
+    else:
+        log_warning(f"Попытка деактивировать несуществующую цель {alert_index} для {user_id}")
