@@ -1,147 +1,585 @@
-2026-07-09 21:13:26,475 - logger - INFO - ➡️ Вход в load_db()
-2026-07-09 21:13:26,476 - logger - INFO - ✅ load_db() завершена за 0.000с
-2026-07-09 21:13:26,476 - logger - INFO - База данных загружена
-2026-07-09 21:13:26,476 - logger - INFO - Middleware защиты от спама подключён
-2026-07-09 21:13:26,476 - logger - INFO - Хендлеры зарегистрированы
-2026-07-09 21:13:26,476 - logger - INFO - TaskQueue: запущено 2 воркеров
-2026-07-09 21:13:26,476 - logger - INFO - TaskQueue запущена
-2026-07-09 21:13:26,476 - logger - INFO - AlertChecker запущен
-2026-07-09 21:13:26,476 - logger - INFO - Бот запущен
-2026-07-09 21:13:26,476 - aiogram.dispatcher - INFO - Start polling
-2026-07-09 21:13:26,476 - logger - INFO - TaskQueue: воркер Worker-1 запущен
-2026-07-09 21:13:26,476 - logger - INFO - TaskQueue: воркер Worker-2 запущен
-2026-07-09 21:13:26,993 - aiogram.dispatcher - INFO - Run polling for bot @CrazyRoot_bot id=8646365702 - 'CrazyLittleThingCalledLove'
-2026-07-09 21:13:31,467 - logger - INFO - AlertChecker запущен
-2026-07-09 21:13:34,676 - logger - INFO - ➡️ Вход в check_rate_limit()
-2026-07-09 21:13:34,676 - logger - INFO - ➡️ Вход в save_db()
-2026-07-09 21:13:34,677 - logger - INFO - ✅ save_db() завершена за 0.000с
-2026-07-09 21:13:34,677 - logger - INFO - ✅ check_rate_limit() завершена за 0.000с
-2026-07-09 21:13:34,963 - logger - INFO - Классификация: 'привет...' → currency (уверенность 0.00)
-2026-07-09 21:13:34,964 - logger - WARNING - Низкая уверенность классификации: 0.00, возвращаем 'other'
-2026-07-09 21:13:34,964 - logger - INFO - Пользователь 270319180: намерение 'other'
-2026-07-09 21:13:35,230 - logger - INFO - ➡️ Вход в add_to_context()
-2026-07-09 21:13:35,230 - logger - INFO - ➡️ Вход в get_user()
-2026-07-09 21:13:35,230 - logger - INFO - ✅ get_user() завершена за 0.000с
-2026-07-09 21:13:35,230 - logger - INFO - ➡️ Вход в save_db()
-2026-07-09 21:13:35,231 - logger - INFO - ✅ save_db() завершена за 0.001с
-2026-07-09 21:13:35,231 - logger - INFO - ✅ add_to_context() завершена за 0.001с
-2026-07-09 21:13:35,231 - logger - INFO - ➡️ Вход в get_full_context()
-2026-07-09 21:13:35,231 - logger - INFO - ➡️ Вход в get_user()
-2026-07-09 21:13:35,231 - logger - INFO - ✅ get_user() завершена за 0.000с
-2026-07-09 21:13:35,231 - logger - INFO - ✅ get_full_context() завершена за 0.000с
-2026-07-09 21:13:35,769 - logger - INFO - ➡️ Вход в add_to_context()
-2026-07-09 21:13:35,769 - logger - INFO - ➡️ Вход в get_user()
-2026-07-09 21:13:35,769 - logger - INFO - ✅ get_user() завершена за 0.000с
-2026-07-09 21:13:35,769 - logger - INFO - ➡️ Вход в save_db()
-2026-07-09 21:13:35,770 - logger - INFO - ✅ save_db() завершена за 0.000с
-2026-07-09 21:13:35,770 - logger - INFO - ✅ add_to_context() завершена за 0.001с
-2026-07-09 21:13:35,770 - logger - INFO - YandexGPT ответил: ```
+2026-07-09 22:10:00,915 - logger - INFO - ➡️ Вход в load_db()
+2026-07-09 22:10:00,915 - logger - INFO - ✅ load_db() завершена за 0.000с
+2026-07-09 22:10:00,915 - logger - INFO - База данных загружена
+2026-07-09 22:10:00,915 - logger - INFO - Middleware защиты от спама подключён
+2026-07-09 22:10:00,915 - logger - INFO - Хендлеры зарегистрированы
+2026-07-09 22:10:00,915 - logger - INFO - TaskQueue: запущено 2 воркеров
+2026-07-09 22:10:00,915 - logger - INFO - TaskQueue запущена
+2026-07-09 22:10:00,915 - logger - INFO - AlertChecker запущен
+2026-07-09 22:10:00,915 - logger - INFO - Бот запущен
+2026-07-09 22:10:00,915 - aiogram.dispatcher - INFO - Start polling
+2026-07-09 22:10:00,915 - logger - INFO - TaskQueue: воркер Worker-1 запущен
+2026-07-09 22:10:00,915 - logger - INFO - TaskQueue: воркер Worker-2 запущен
+2026-07-09 22:10:01,098 - aiogram.dispatcher - INFO - Run polling for bot @CrazyRoot_bot id=8646365702 - 'CrazyLittleThingCalledLove'
+2026-07-09 22:10:05,912 - logger - INFO - AlertChecker запущен
+2026-07-09 22:10:11,727 - logger - INFO - ➡️ Вход в clear_context()
+2026-07-09 22:10:11,727 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:10:11,727 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:10:11,727 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:10:11,728 - logger - INFO - ✅ save_db() завершена за 0.000с
+2026-07-09 22:10:11,728 - logger - INFO - ✅ clear_context() завершена за 0.001с
+2026-07-09 22:10:12,006 - logger - INFO - Пользователь 270319180 очистил контекст
+2026-07-09 22:10:12,006 - aiogram.event - INFO - Update id=778791277 is handled. Duration 280 ms by bot id=8646365702
+2026-07-09 22:10:23,906 - logger - INFO - 📨 Пользователь 270319180: привет
+2026-07-09 22:10:23,906 - logger - INFO - ➡️ Вход в check_rate_limit()
+2026-07-09 22:10:23,906 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:10:23,907 - logger - INFO - ✅ save_db() завершена за 0.000с
+2026-07-09 22:10:23,907 - logger - INFO - ✅ check_rate_limit() завершена за 0.000с
+2026-07-09 22:10:24,157 - logger - INFO - Классификация: 'привет...' → currency (уверенность 0.00)
+2026-07-09 22:10:24,157 - logger - WARNING - Низкая уверенность классификации: 0.00, возвращаем 'other'
+2026-07-09 22:10:24,157 - logger - INFO - Пользователь 270319180: классификатор → 'other'
+2026-07-09 22:10:24,302 - logger - INFO - ➡️ Вход в add_to_context()
+2026-07-09 22:10:24,302 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:10:24,302 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:10:24,302 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:10:24,302 - logger - INFO - ✅ save_db() завершена за 0.001с
+2026-07-09 22:10:24,303 - logger - INFO - ✅ add_to_context() завершена за 0.001с
+2026-07-09 22:10:24,303 - logger - INFO - ➡️ Вход в get_full_context()
+2026-07-09 22:10:24,303 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:10:24,303 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:10:24,303 - logger - INFO - ✅ get_full_context() завершена за 0.000с
+2026-07-09 22:10:24,635 - logger - INFO - ➡️ Вход в add_to_context()
+2026-07-09 22:10:24,635 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:10:24,635 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:10:24,635 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:10:24,636 - logger - INFO - ✅ save_db() завершена за 0.000с
+2026-07-09 22:10:24,636 - logger - INFO - ✅ add_to_context() завершена за 0.001с
+2026-07-09 22:10:24,636 - logger - INFO - YandexGPT ответил: ```
 [{"text": "Здравствуйте! Чем я могу вам помочь?"}]
 ```...
-2026-07-09 21:13:35,770 - logger - INFO - Распарсено 1 задач
-2026-07-09 21:13:35,770 - logger - INFO - Задача 1/1: ['text']
-2026-07-09 21:13:35,770 - logger - INFO - ➡️ Вход в handle()
-2026-07-09 21:13:35,770 - logger - INFO - TextExecutor: отправка текста длиной 36 символов
-2026-07-09 21:13:35,887 - logger - INFO - ✅ handle() завершена за 0.116с
-2026-07-09 21:13:35,887 - logger - INFO - Пайплайн для 270319180 успешно выполнен
-2026-07-09 21:13:35,887 - aiogram.event - INFO - Update id=778791251 is handled. Duration 1218 ms by bot id=8646365702
-2026-07-09 21:13:41,466 - logger - INFO - ➡️ Вход в check_rate_limit()
-2026-07-09 21:13:41,466 - logger - INFO - ➡️ Вход в save_db()
-2026-07-09 21:13:41,467 - logger - INFO - ✅ save_db() завершена за 0.001с
-2026-07-09 21:13:41,467 - logger - INFO - ✅ check_rate_limit() завершена за 0.001с
-2026-07-09 21:13:41,541 - logger - INFO - Классификация: 'курс доллара...' → currency (уверенность 1.00)
-2026-07-09 21:13:41,541 - logger - INFO - Пользователь 270319180: намерение 'currency'
-2026-07-09 21:13:42,118 - logger - INFO - Пользователь 270319180: курс USD/RUB = 76.80
-2026-07-09 21:13:42,118 - aiogram.event - INFO - Update id=778791252 is handled. Duration 639 ms by bot id=8646365702
-2026-07-09 21:13:45,962 - logger - INFO - ➡️ Вход в check_rate_limit()
-2026-07-09 21:13:45,962 - logger - INFO - ➡️ Вход в save_db()
-2026-07-09 21:13:45,963 - logger - INFO - ✅ save_db() завершена за 0.001с
-2026-07-09 21:13:45,963 - logger - INFO - ✅ check_rate_limit() завершена за 0.001с
-2026-07-09 21:13:46,038 - logger - INFO - Классификация: 'курс биткоина...' → currency (уверенность 0.00)
-2026-07-09 21:13:46,038 - logger - WARNING - Низкая уверенность классификации: 0.00, возвращаем 'other'
-2026-07-09 21:13:46,038 - logger - INFO - Пользователь 270319180: намерение 'other'
-2026-07-09 21:13:46,125 - logger - INFO - ➡️ Вход в add_to_context()
-2026-07-09 21:13:46,125 - logger - INFO - ➡️ Вход в get_user()
-2026-07-09 21:13:46,125 - logger - INFO - ✅ get_user() завершена за 0.000с
-2026-07-09 21:13:46,125 - logger - INFO - ➡️ Вход в save_db()
-2026-07-09 21:13:46,125 - logger - INFO - ✅ save_db() завершена за 0.000с
-2026-07-09 21:13:46,125 - logger - INFO - ✅ add_to_context() завершена за 0.000с
-2026-07-09 21:13:46,125 - logger - INFO - ➡️ Вход в get_full_context()
-2026-07-09 21:13:46,125 - logger - INFO - ➡️ Вход в get_user()
-2026-07-09 21:13:46,125 - logger - INFO - ✅ get_user() завершена за 0.000с
-2026-07-09 21:13:46,125 - logger - INFO - ✅ get_full_context() завершена за 0.000с
-2026-07-09 21:13:46,694 - logger - INFO - ➡️ Вход в add_to_context()
-2026-07-09 21:13:46,694 - logger - INFO - ➡️ Вход в get_user()
-2026-07-09 21:13:46,694 - logger - INFO - ✅ get_user() завершена за 0.000с
-2026-07-09 21:13:46,694 - logger - INFO - ➡️ Вход в save_db()
-2026-07-09 21:13:46,694 - logger - INFO - ✅ save_db() завершена за 0.001с
-2026-07-09 21:13:46,694 - logger - INFO - ✅ add_to_context() завершена за 0.001с
-2026-07-09 21:13:46,694 - logger - INFO - YandexGPT ответил: ```
-[{"text": "Извините, я не могу предоставить актуальный курс биткоина. Для этого вам нужно воспол...
-2026-07-09 21:13:46,694 - logger - INFO - Распарсено 1 задач
-2026-07-09 21:13:46,694 - logger - INFO - Задача 1/1: ['text']
-2026-07-09 21:13:46,695 - logger - INFO - ➡️ Вход в handle()
-2026-07-09 21:13:46,695 - logger - INFO - TextExecutor: отправка текста длиной 137 символов
-2026-07-09 21:13:46,807 - logger - INFO - ✅ handle() завершена за 0.112с
-2026-07-09 21:13:46,807 - logger - INFO - Пайплайн для 270319180 успешно выполнен
-2026-07-09 21:13:46,807 - aiogram.event - INFO - Update id=778791253 is handled. Duration 859 ms by bot id=8646365702
-2026-07-09 21:14:31,465 - logger - INFO - ➡️ Вход в get_user()
-2026-07-09 21:14:31,465 - logger - INFO - ✅ get_user() завершена за 0.000с
-2026-07-09 21:14:56,100 - logger - INFO - ➡️ Вход в load_db()
-2026-07-09 21:14:56,101 - logger - INFO - ✅ load_db() завершена за 0.000с
-2026-07-09 21:14:56,101 - logger - INFO - База данных загружена
-2026-07-09 21:14:56,101 - logger - INFO - Middleware защиты от спама подключён
-2026-07-09 21:14:56,101 - logger - INFO - Хендлеры зарегистрированы
-2026-07-09 21:14:56,101 - logger - INFO - TaskQueue: запущено 2 воркеров
-2026-07-09 21:14:56,101 - logger - INFO - TaskQueue запущена
-2026-07-09 21:14:56,101 - logger - INFO - AlertChecker запущен
-2026-07-09 21:14:56,101 - logger - INFO - Бот запущен
-2026-07-09 21:14:56,102 - aiogram.dispatcher - INFO - Start polling
-2026-07-09 21:14:56,102 - logger - INFO - TaskQueue: воркер Worker-1 запущен
-2026-07-09 21:14:56,102 - logger - INFO - TaskQueue: воркер Worker-2 запущен
-2026-07-09 21:14:56,294 - aiogram.dispatcher - INFO - Run polling for bot @CrazyRoot_bot id=8646365702 - 'CrazyLittleThingCalledLove'
-2026-07-09 21:15:00,433 - logger - INFO - ➡️ Вход в check_rate_limit()
-2026-07-09 21:15:00,434 - logger - INFO - ➡️ Вход в save_db()
-2026-07-09 21:15:00,434 - logger - INFO - ✅ save_db() завершена за 0.001с
-2026-07-09 21:15:00,434 - logger - INFO - ✅ check_rate_limit() завершена за 0.001с
-2026-07-09 21:15:00,703 - logger - INFO - Классификация: 'курс биткоина...' → currency (уверенность 0.00)
-2026-07-09 21:15:00,703 - logger - WARNING - Низкая уверенность классификации: 0.00, возвращаем 'other'
-2026-07-09 21:15:00,703 - logger - INFO - Пользователь 270319180: намерение 'other'
-2026-07-09 21:15:00,909 - logger - INFO - ➡️ Вход в add_to_context()
-2026-07-09 21:15:00,909 - logger - INFO - ➡️ Вход в get_user()
-2026-07-09 21:15:00,909 - logger - INFO - ✅ get_user() завершена за 0.000с
-2026-07-09 21:15:00,909 - logger - INFO - ➡️ Вход в save_db()
-2026-07-09 21:15:00,910 - logger - INFO - ✅ save_db() завершена за 0.001с
-2026-07-09 21:15:00,910 - logger - INFO - ✅ add_to_context() завершена за 0.001с
-2026-07-09 21:15:00,910 - logger - INFO - ➡️ Вход в get_full_context()
-2026-07-09 21:15:00,910 - logger - INFO - ➡️ Вход в get_user()
-2026-07-09 21:15:00,911 - logger - INFO - ✅ get_user() завершена за 0.000с
-2026-07-09 21:15:00,911 - logger - INFO - ✅ get_full_context() завершена за 0.000с
-2026-07-09 21:15:01,693 - logger - INFO - ➡️ Вход в add_to_context()
-2026-07-09 21:15:01,693 - logger - INFO - ➡️ Вход в get_user()
-2026-07-09 21:15:01,693 - logger - INFO - ✅ get_user() завершена за 0.000с
-2026-07-09 21:15:01,693 - logger - INFO - ➡️ Вход в save_db()
-2026-07-09 21:15:01,694 - logger - INFO - ✅ save_db() завершена за 0.000с
-2026-07-09 21:15:01,694 - logger - INFO - ✅ add_to_context() завершена за 0.001с
-2026-07-09 21:15:01,694 - logger - INFO - YandexGPT ответил: ```
-[{"text": "Извините, я не могу предоставить актуальный курс биткоина. Для этого вам нужно воспол...
-2026-07-09 21:15:01,694 - logger - INFO - Распарсено 1 задач
-2026-07-09 21:15:01,694 - logger - INFO - Задача 1/1: ['text']
-2026-07-09 21:15:01,694 - logger - INFO - ➡️ Вход в handle()
-2026-07-09 21:15:01,694 - logger - INFO - TextExecutor: отправка текста длиной 137 символов
-2026-07-09 21:15:01,695 - logger - INFO - AlertChecker запущен
-2026-07-09 21:15:01,804 - logger - INFO - ✅ handle() завершена за 0.110с
-2026-07-09 21:15:01,805 - logger - INFO - Пайплайн для 270319180 успешно выполнен
-2026-07-09 21:15:01,805 - aiogram.event - INFO - Update id=778791254 is handled. Duration 1375 ms by bot id=8646365702
-2026-07-09 21:16:01,695 - logger - INFO - ➡️ Вход в get_user()
-2026-07-09 21:16:01,695 - logger - INFO - ✅ get_user() завершена за 0.000с
-2026-07-09 21:17:01,670 - logger - INFO - ➡️ Вход в get_user()
-2026-07-09 21:17:01,670 - logger - INFO - ✅ get_user() завершена за 0.000с
-2026-07-09 21:18:01,671 - logger - INFO - ➡️ Вход в get_user()
-2026-07-09 21:18:01,671 - logger - INFO - ✅ get_user() завершена за 0.000с
-2026-07-09 21:19:01,672 - logger - INFO - ➡️ Вход в get_user()
-2026-07-09 21:19:01,672 - logger - INFO - ✅ get_user() завершена за 0.000с
-2026-07-09 21:20:01,670 - logger - INFO - ➡️ Вход в get_user()
-2026-07-09 21:20:01,670 - logger - INFO - ✅ get_user() завершена за 0.000с
-2026-07-09 21:21:01,668 - logger - INFO - ➡️ Вход в get_user()
-2026-07-09 21:21:01,669 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:10:24,636 - logger - INFO - Распарсено 1 задач
+2026-07-09 22:10:24,636 - logger - INFO - Задача 1/1: ['text']
+2026-07-09 22:10:24,636 - logger - INFO - ➡️ Вход в handle()
+2026-07-09 22:10:24,636 - logger - INFO - TextExecutor: отправка текста длиной 36 символов
+2026-07-09 22:10:24,741 - logger - INFO - ✅ handle() завершена за 0.105с
+2026-07-09 22:10:24,741 - logger - INFO - Пайплайн для 270319180 успешно выполнен
+2026-07-09 22:10:24,741 - logger - INFO - ✅ Хэндлер handle_multimodal отработал за 0.835с для 270319180
+2026-07-09 22:10:24,742 - aiogram.event - INFO - Update id=778791278 is handled. Duration 827 ms by bot id=8646365702
+2026-07-09 22:10:29,454 - logger - INFO - 📨 Пользователь 270319180: курс биткоина
+2026-07-09 22:10:29,454 - logger - INFO - ➡️ Вход в check_rate_limit()
+2026-07-09 22:10:29,454 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:10:29,455 - logger - INFO - ✅ save_db() завершена за 0.001с
+2026-07-09 22:10:29,455 - logger - INFO - ✅ check_rate_limit() завершена за 0.001с
+2026-07-09 22:10:29,455 - logger - INFO - Пользователь 270319180: словарь → криптовалюта 'bitcoin'
+2026-07-09 22:10:29,958 - logger - INFO - Пользователь 270319180: курс bitcoin = 63162.00 USD
+2026-07-09 22:10:29,958 - logger - INFO - ✅ Хэндлер handle_multimodal отработал за 0.504с для 270319180
+2026-07-09 22:10:29,958 - aiogram.event - INFO - Update id=778791279 is handled. Duration 500 ms by bot id=8646365702
+2026-07-09 22:10:40,268 - logger - INFO - 📨 Пользователь 270319180: следить за биткоином
+2026-07-09 22:10:40,268 - logger - INFO - ➡️ Вход в check_rate_limit()
+2026-07-09 22:10:40,268 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:10:40,268 - logger - INFO - ✅ save_db() завершена за 0.001с
+2026-07-09 22:10:40,268 - logger - INFO - ✅ check_rate_limit() завершена за 0.001с
+2026-07-09 22:10:40,268 - logger - INFO - Пользователь 270319180: словарь → криптовалюта 'bitcoin'
+2026-07-09 22:10:40,718 - logger - INFO - Пользователь 270319180: начал установку цели для bitcoin
+2026-07-09 22:10:40,718 - logger - INFO - ✅ Хэндлер handle_multimodal отработал за 0.451с для 270319180
+2026-07-09 22:10:40,718 - aiogram.event - INFO - Update id=778791280 is handled. Duration 453 ms by bot id=8646365702
+2026-07-09 22:10:44,505 - logger - INFO - 📨 Пользователь 270319180: 63000
+2026-07-09 22:10:44,505 - logger - INFO - ➡️ Вход в check_rate_limit()
+2026-07-09 22:10:44,505 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:10:44,507 - logger - INFO - ✅ save_db() завершена за 0.002с
+2026-07-09 22:10:44,508 - logger - INFO - ✅ check_rate_limit() завершена за 0.003с
+2026-07-09 22:10:44,585 - logger - INFO - Классификация: '63000...' → currency (уверенность 0.00)
+2026-07-09 22:10:44,586 - logger - WARNING - Низкая уверенность классификации: 0.00, возвращаем 'other'
+2026-07-09 22:10:44,586 - logger - INFO - Пользователь 270319180: классификатор → 'other'
+2026-07-09 22:10:44,668 - logger - INFO - ➡️ Вход в add_to_context()
+2026-07-09 22:10:44,669 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:10:44,669 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:10:44,669 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:10:44,670 - logger - INFO - ✅ save_db() завершена за 0.001с
+2026-07-09 22:10:44,671 - logger - INFO - ✅ add_to_context() завершена за 0.002с
+2026-07-09 22:10:44,671 - logger - INFO - ➡️ Вход в get_full_context()
+2026-07-09 22:10:44,671 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:10:44,671 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:10:44,671 - logger - INFO - ✅ get_full_context() завершена за 0.000с
+2026-07-09 22:10:45,077 - logger - INFO - ➡️ Вход в add_to_context()
+2026-07-09 22:10:45,077 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:10:45,077 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:10:45,077 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:10:45,078 - logger - INFO - ✅ save_db() завершена за 0.001с
+2026-07-09 22:10:45,078 - logger - INFO - ✅ add_to_context() завершена за 0.001с
+2026-07-09 22:10:45,078 - logger - INFO - YandexGPT ответил: ```
+[{"text": "Извините, я не понял запрос. Повторите, пожалуйста."}]
+```...
+2026-07-09 22:10:45,078 - logger - INFO - Распарсено 1 задач
+2026-07-09 22:10:45,078 - logger - INFO - Задача 1/1: ['text']
+2026-07-09 22:10:45,078 - logger - INFO - ➡️ Вход в handle()
+2026-07-09 22:10:45,078 - logger - INFO - TextExecutor: отправка текста длиной 51 символов
+2026-07-09 22:10:45,184 - logger - INFO - ✅ handle() завершена за 0.105с
+2026-07-09 22:10:45,184 - logger - INFO - Пайплайн для 270319180 успешно выполнен
+2026-07-09 22:10:45,184 - logger - INFO - ✅ Хэндлер handle_multimodal отработал за 0.679с для 270319180
+2026-07-09 22:10:45,184 - aiogram.event - INFO - Update id=778791281 is handled. Duration 687 ms by bot id=8646365702
+2026-07-09 22:11:05,916 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:11:05,916 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:12:05,916 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:12:05,916 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:12:47,219 - logger - INFO - ➡️ Вход в load_db()
+2026-07-09 22:12:47,219 - logger - INFO - ✅ load_db() завершена за 0.000с
+2026-07-09 22:12:47,220 - logger - INFO - База данных загружена
+2026-07-09 22:12:47,220 - logger - INFO - Middleware защиты от спама подключён
+2026-07-09 22:12:47,220 - logger - INFO - Хендлеры зарегистрированы
+2026-07-09 22:12:47,220 - logger - INFO - TaskQueue: запущено 2 воркеров
+2026-07-09 22:12:47,220 - logger - INFO - TaskQueue запущена
+2026-07-09 22:12:47,220 - logger - INFO - AlertChecker запущен
+2026-07-09 22:12:47,220 - logger - INFO - Бот запущен
+2026-07-09 22:12:47,220 - aiogram.dispatcher - INFO - Start polling
+2026-07-09 22:12:47,220 - logger - INFO - TaskQueue: воркер Worker-1 запущен
+2026-07-09 22:12:47,220 - logger - INFO - TaskQueue: воркер Worker-2 запущен
+2026-07-09 22:12:47,462 - aiogram.dispatcher - INFO - Run polling for bot @CrazyRoot_bot id=8646365702 - 'CrazyLittleThingCalledLove'
+2026-07-09 22:12:52,230 - logger - INFO - AlertChecker запущен
+2026-07-09 22:12:55,027 - logger - INFO - 📨 Пользователь 270319180: следить за биткоином
+2026-07-09 22:12:55,027 - logger - INFO - ➡️ Вход в check_rate_limit()
+2026-07-09 22:12:55,027 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:12:55,028 - logger - INFO - ✅ save_db() завершена за 0.001с
+2026-07-09 22:12:55,028 - logger - INFO - ✅ check_rate_limit() завершена за 0.001с
+2026-07-09 22:12:55,028 - logger - INFO - Пользователь 270319180: словарь → криптовалюта 'bitcoin'
+2026-07-09 22:12:55,961 - logger - INFO - Пользователь 270319180: начал установку цели для bitcoin
+2026-07-09 22:12:55,961 - logger - INFO - ✅ Хэндлер handle_multimodal отработал за 0.934с для 270319180
+2026-07-09 22:12:55,961 - aiogram.event - INFO - Update id=778791282 is handled. Duration 937 ms by bot id=8646365702
+2026-07-09 22:12:59,585 - logger - INFO - Пользователь 270319180: ввёл цель 63000.00 для bitcoin
+2026-07-09 22:12:59,585 - aiogram.event - INFO - Update id=778791283 is handled. Duration 94 ms by bot id=8646365702
+2026-07-09 22:13:02,685 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:13:02,685 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:13:02,685 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:13:02,687 - logger - INFO - ✅ save_db() завершена за 0.001с
+2026-07-09 22:13:02,687 - logger - INFO - Добавлена цель для 270319180: bitcoin = 63000.0
+2026-07-09 22:13:02,790 - logger - INFO - Пользователь 270319180: цель для bitcoin установлена на 63000.00 USD
+2026-07-09 22:13:02,790 - aiogram.event - INFO - Update id=778791284 is handled. Duration 186 ms by bot id=8646365702
+2026-07-09 22:13:52,242 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:13:52,242 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:13:52,807 - logger - INFO - Уведомление отправлено пользователю 270319180 по bitcoin
+2026-07-09 22:13:52,807 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:13:52,807 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:13:52,807 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:13:52,807 - logger - INFO - ✅ save_db() завершена за 0.001с
+2026-07-09 22:13:52,808 - logger - INFO - Деактивирована цель для 270319180: индекс 0
+2026-07-09 22:14:52,801 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:14:52,801 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:15:52,804 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:15:52,804 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:16:52,806 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:16:52,806 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:17:49,788 - aiogram.dispatcher - INFO - Polling stopped
+2026-07-09 22:17:49,789 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ServerDisconnectedError: Server disconnected
+2026-07-09 22:17:49,789 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8646365702)
+2026-07-09 22:21:56,356 - logger - INFO - ➡️ Вход в load_db()
+2026-07-09 22:21:56,356 - logger - INFO - ✅ load_db() завершена за 0.000с
+2026-07-09 22:21:56,356 - logger - INFO - База данных загружена
+2026-07-09 22:21:56,356 - logger - INFO - Middleware защиты от спама подключён
+2026-07-09 22:21:56,356 - logger - INFO - Хендлеры зарегистрированы
+2026-07-09 22:21:56,356 - logger - INFO - TaskQueue: запущено 2 воркеров
+2026-07-09 22:21:56,356 - logger - INFO - TaskQueue запущена
+2026-07-09 22:21:56,356 - logger - INFO - AlertChecker запущен
+2026-07-09 22:21:56,357 - logger - INFO - Бот запущен
+2026-07-09 22:21:56,357 - aiogram.dispatcher - INFO - Start polling
+2026-07-09 22:21:56,357 - logger - INFO - TaskQueue: воркер Worker-1 запущен
+2026-07-09 22:21:56,357 - logger - INFO - TaskQueue: воркер Worker-2 запущен
+2026-07-09 22:21:56,703 - aiogram.dispatcher - INFO - Run polling for bot @CrazyRoot_bot id=8646365702 - 'CrazyLittleThingCalledLove'
+2026-07-09 22:22:01,363 - logger - INFO - AlertChecker запущен
+2026-07-09 22:22:16,446 - logger - INFO - 📨 Пользователь 270319180: следить за биткоином
+2026-07-09 22:22:16,446 - logger - INFO - ➡️ Вход в check_rate_limit()
+2026-07-09 22:22:16,447 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:22:16,448 - logger - INFO - ✅ save_db() завершена за 0.001с
+2026-07-09 22:22:16,448 - logger - INFO - ✅ check_rate_limit() завершена за 0.001с
+2026-07-09 22:22:16,448 - logger - INFO - Пользователь 270319180: словарь → криптовалюта 'bitcoin'
+2026-07-09 22:22:17,448 - logger - INFO - Пользователь 270319180: начал установку цели для bitcoin
+2026-07-09 22:22:17,449 - logger - INFO - ✅ Хэндлер handle_multimodal отработал за 1.002с для 270319180
+2026-07-09 22:22:17,449 - aiogram.event - INFO - Update id=778791285 is handled. Duration 1000 ms by bot id=8646365702
+2026-07-09 22:22:20,751 - logger - INFO - Пользователь 270319180: ввёл цель 63000.00 для bitcoin
+2026-07-09 22:22:20,752 - aiogram.event - INFO - Update id=778791286 is handled. Duration 94 ms by bot id=8646365702
+2026-07-09 22:22:22,514 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:22:22,514 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:22:22,514 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:22:22,515 - logger - INFO - ✅ save_db() завершена за 0.000с
+2026-07-09 22:22:22,515 - logger - INFO - Добавлена цель для 270319180: bitcoin = 63000.0 (crypto)
+2026-07-09 22:22:22,612 - logger - INFO - Пользователь 270319180: цель для bitcoin установлена на 63000.00 USD
+2026-07-09 22:22:22,612 - aiogram.event - INFO - Update id=778791287 is handled. Duration 405 ms by bot id=8646365702
+2026-07-09 22:22:29,633 - logger - INFO - 📨 Пользователь 270319180: следить за долларом
+2026-07-09 22:22:29,633 - logger - INFO - ➡️ Вход в check_rate_limit()
+2026-07-09 22:22:29,633 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:22:29,634 - logger - INFO - ✅ save_db() завершена за 0.000с
+2026-07-09 22:22:29,635 - logger - INFO - ✅ check_rate_limit() завершена за 0.001с
+2026-07-09 22:22:30,032 - logger - INFO - Классификация: 'следить за долларом...' → currency (уверенность 1.00)
+2026-07-09 22:22:30,032 - logger - INFO - Пользователь 270319180: классификатор → 'currency'
+2026-07-09 22:22:30,781 - logger - INFO - Пользователь 270319180: начал установку цели для USD/RUB
+2026-07-09 22:22:30,781 - logger - INFO - ✅ Хэндлер handle_multimodal отработал за 1.148с для 270319180
+2026-07-09 22:22:30,781 - aiogram.event - INFO - Update id=778791288 is handled. Duration 1155 ms by bot id=8646365702
+2026-07-09 22:22:34,688 - logger - INFO - Пользователь 270319180: ввёл цель 76.00 для USD/RUB
+2026-07-09 22:22:34,688 - aiogram.event - INFO - Update id=778791289 is handled. Duration 93 ms by bot id=8646365702
+2026-07-09 22:22:36,227 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:22:36,227 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:22:36,228 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:22:36,229 - logger - INFO - ✅ save_db() завершена за 0.001с
+2026-07-09 22:22:36,229 - logger - INFO - Добавлена цель для 270319180: USD/RUB = 76.0 (currency)
+2026-07-09 22:22:36,339 - logger - INFO - Пользователь 270319180: цель для USD/RUB установлена на 76.00
+2026-07-09 22:22:36,339 - aiogram.event - INFO - Update id=778791290 is handled. Duration 202 ms by bot id=8646365702
+2026-07-09 22:23:01,362 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:23:01,362 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:23:01,815 - logger - INFO - Уведомление по криптовалюте отправлено пользователю 270319180
+2026-07-09 22:23:01,815 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:23:01,815 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:23:01,815 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:23:01,816 - logger - INFO - ✅ save_db() завершена за 0.000с
+2026-07-09 22:23:01,816 - logger - INFO - Деактивирована цель для 270319180: индекс 0
+2026-07-09 22:23:01,816 - logger - ERROR - Ошибка проверки курса валюты USD/RUB: name 'get_exchange_rate' is not defined
+2026-07-09 22:24:01,814 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:24:01,814 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:24:02,245 - logger - INFO - Уведомление по криптовалюте отправлено пользователю 270319180
+2026-07-09 22:24:02,245 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:24:02,245 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:24:02,245 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:24:02,246 - logger - INFO - ✅ save_db() завершена за 0.001с
+2026-07-09 22:24:02,246 - logger - INFO - Деактивирована цель для 270319180: индекс 0
+2026-07-09 22:24:02,246 - logger - ERROR - Ошибка проверки курса валюты USD/RUB: name 'get_exchange_rate' is not defined
+2026-07-09 22:25:02,251 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:25:02,252 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:25:02,670 - logger - INFO - Уведомление по криптовалюте отправлено пользователю 270319180
+2026-07-09 22:25:02,670 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:25:02,670 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:25:02,670 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:25:02,671 - logger - INFO - ✅ save_db() завершена за 0.001с
+2026-07-09 22:25:02,671 - logger - INFO - Деактивирована цель для 270319180: индекс 0
+2026-07-09 22:25:02,671 - logger - ERROR - Ошибка проверки курса валюты USD/RUB: name 'get_exchange_rate' is not defined
+2026-07-09 22:26:02,671 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:26:02,671 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:26:03,437 - logger - INFO - Уведомление по криптовалюте отправлено пользователю 270319180
+2026-07-09 22:26:03,437 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:26:03,437 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:26:03,437 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:26:03,438 - logger - INFO - ✅ save_db() завершена за 0.001с
+2026-07-09 22:26:03,438 - logger - INFO - Деактивирована цель для 270319180: индекс 0
+2026-07-09 22:26:03,439 - logger - ERROR - Ошибка проверки курса валюты USD/RUB: name 'get_exchange_rate' is not defined
+2026-07-09 22:27:03,436 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:27:03,436 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:27:03,865 - logger - INFO - Уведомление по криптовалюте отправлено пользователю 270319180
+2026-07-09 22:27:03,865 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:27:03,865 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:27:03,865 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:27:03,865 - logger - INFO - ✅ save_db() завершена за 0.001с
+2026-07-09 22:27:03,866 - logger - INFO - Деактивирована цель для 270319180: индекс 0
+2026-07-09 22:27:03,866 - logger - ERROR - Ошибка проверки курса валюты USD/RUB: name 'get_exchange_rate' is not defined
+2026-07-09 22:27:53,281 - logger - INFO - ➡️ Вход в load_db()
+2026-07-09 22:27:53,282 - logger - INFO - ✅ load_db() завершена за 0.000с
+2026-07-09 22:27:53,282 - logger - INFO - База данных загружена
+2026-07-09 22:27:53,282 - logger - INFO - Middleware защиты от спама подключён
+2026-07-09 22:27:53,282 - logger - INFO - Хендлеры зарегистрированы
+2026-07-09 22:27:53,282 - logger - INFO - TaskQueue: запущено 2 воркеров
+2026-07-09 22:27:53,282 - logger - INFO - TaskQueue запущена
+2026-07-09 22:27:53,282 - logger - INFO - AlertChecker запущен
+2026-07-09 22:27:53,282 - logger - INFO - Бот запущен
+2026-07-09 22:27:53,282 - aiogram.dispatcher - INFO - Start polling
+2026-07-09 22:27:53,282 - logger - INFO - TaskQueue: воркер Worker-1 запущен
+2026-07-09 22:27:53,282 - logger - INFO - TaskQueue: воркер Worker-2 запущен
+2026-07-09 22:27:53,563 - aiogram.dispatcher - INFO - Run polling for bot @CrazyRoot_bot id=8646365702 - 'CrazyLittleThingCalledLove'
+2026-07-09 22:27:58,285 - logger - INFO - AlertChecker запущен
+2026-07-09 22:28:04,009 - logger - INFO - 📨 Пользователь 270319180: следить за биткоином
+2026-07-09 22:28:04,009 - logger - INFO - ➡️ Вход в check_rate_limit()
+2026-07-09 22:28:04,009 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:28:04,011 - logger - INFO - ✅ save_db() завершена за 0.002с
+2026-07-09 22:28:04,011 - logger - INFO - ✅ check_rate_limit() завершена за 0.002с
+2026-07-09 22:28:04,012 - logger - INFO - Пользователь 270319180: словарь → криптовалюта 'bitcoin'
+2026-07-09 22:28:05,179 - logger - INFO - Пользователь 270319180: начал установку цели для bitcoin
+2026-07-09 22:28:05,179 - logger - INFO - ✅ Хэндлер handle_multimodal отработал за 1.170с для 270319180
+2026-07-09 22:28:05,180 - aiogram.event - INFO - Update id=778791291 is handled. Duration 1172 ms by bot id=8646365702
+2026-07-09 22:28:09,504 - logger - INFO - Пользователь 270319180: ввёл цель 63000.00 для bitcoin
+2026-07-09 22:28:09,504 - aiogram.event - INFO - Update id=778791292 is handled. Duration 327 ms by bot id=8646365702
+2026-07-09 22:28:11,639 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:28:11,640 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:28:11,640 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:28:11,640 - logger - INFO - ✅ save_db() завершена за 0.001с
+2026-07-09 22:28:11,640 - logger - INFO - Добавлена цель для 270319180: bitcoin = 63000.0 (crypto)
+2026-07-09 22:28:11,739 - logger - INFO - Пользователь 270319180: цель для bitcoin установлена на 63000.00 USD
+2026-07-09 22:28:11,739 - aiogram.event - INFO - Update id=778791293 is handled. Duration 171 ms by bot id=8646365702
+2026-07-09 22:28:58,282 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:28:58,282 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:28:58,651 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:28:58,651 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:28:58,651 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:28:58,652 - logger - INFO - ✅ save_db() завершена за 0.001с
+2026-07-09 22:28:58,652 - logger - INFO - Деактивирована цель для 270319180: индекс 0
+2026-07-09 22:28:58,768 - logger - INFO - Уведомление по криптовалюте отправлено пользователю 270319180
+2026-07-09 22:28:58,769 - logger - ERROR - Ошибка проверки курса валюты USD/RUB: name 'get_exchange_rate' is not defined
+2026-07-09 22:28:59,124 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:28:59,124 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:28:59,124 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:28:59,125 - logger - INFO - ✅ save_db() завершена за 0.001с
+2026-07-09 22:28:59,125 - logger - INFO - Деактивирована цель для 270319180: индекс 0
+2026-07-09 22:28:59,231 - logger - INFO - Уведомление по криптовалюте отправлено пользователю 270319180
+2026-07-09 22:29:59,235 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:29:59,235 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:29:59,686 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:29:59,686 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:29:59,686 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:29:59,687 - logger - INFO - ✅ save_db() завершена за 0.001с
+2026-07-09 22:29:59,687 - logger - INFO - Деактивирована цель для 270319180: индекс 0
+2026-07-09 22:29:59,825 - logger - INFO - Уведомление по криптовалюте отправлено пользователю 270319180
+2026-07-09 22:29:59,826 - logger - ERROR - Ошибка проверки курса валюты USD/RUB: name 'get_exchange_rate' is not defined
+2026-07-09 22:30:00,408 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:30:00,408 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:30:00,408 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:30:00,409 - logger - INFO - ✅ save_db() завершена за 0.000с
+2026-07-09 22:30:00,409 - logger - INFO - Деактивирована цель для 270319180: индекс 0
+2026-07-09 22:30:00,592 - logger - INFO - Уведомление по криптовалюте отправлено пользователю 270319180
+2026-07-09 22:31:00,601 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:31:00,601 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:31:01,338 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:31:01,339 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:31:01,339 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:31:01,339 - logger - INFO - ✅ save_db() завершена за 0.000с
+2026-07-09 22:31:01,339 - logger - INFO - Деактивирована цель для 270319180: индекс 0
+2026-07-09 22:31:01,448 - logger - INFO - Уведомление по криптовалюте отправлено пользователю 270319180
+2026-07-09 22:31:01,448 - logger - ERROR - Ошибка проверки курса валюты USD/RUB: name 'get_exchange_rate' is not defined
+2026-07-09 22:31:01,792 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:31:01,792 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:31:01,792 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:31:01,792 - logger - INFO - ✅ save_db() завершена за 0.001с
+2026-07-09 22:31:01,793 - logger - INFO - Деактивирована цель для 270319180: индекс 0
+2026-07-09 22:31:01,916 - logger - INFO - Уведомление по криптовалюте отправлено пользователю 270319180
+2026-07-09 22:31:09,572 - aiogram.dispatcher - INFO - Polling stopped
+2026-07-09 22:31:09,573 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ServerDisconnectedError: Server disconnected
+2026-07-09 22:31:09,573 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8646365702)
+2026-07-09 22:31:14,572 - logger - INFO - ➡️ Вход в load_db()
+2026-07-09 22:31:14,573 - logger - INFO - ✅ load_db() завершена за 0.000с
+2026-07-09 22:31:14,573 - logger - INFO - База данных загружена
+2026-07-09 22:31:14,573 - logger - INFO - Middleware защиты от спама подключён
+2026-07-09 22:31:14,573 - logger - INFO - Хендлеры зарегистрированы
+2026-07-09 22:31:14,573 - logger - INFO - TaskQueue: запущено 2 воркеров
+2026-07-09 22:31:14,573 - logger - INFO - TaskQueue запущена
+2026-07-09 22:31:14,573 - logger - INFO - AlertChecker запущен
+2026-07-09 22:31:14,573 - logger - INFO - Бот запущен
+2026-07-09 22:31:14,573 - aiogram.dispatcher - INFO - Start polling
+2026-07-09 22:31:14,573 - logger - INFO - TaskQueue: воркер Worker-1 запущен
+2026-07-09 22:31:14,573 - logger - INFO - TaskQueue: воркер Worker-2 запущен
+2026-07-09 22:31:15,907 - aiogram.dispatcher - INFO - Run polling for bot @CrazyRoot_bot id=8646365702 - 'CrazyLittleThingCalledLove'
+2026-07-09 22:31:19,567 - logger - INFO - AlertChecker запущен
+2026-07-09 22:32:19,572 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:32:19,572 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:32:20,416 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:32:20,416 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:32:20,416 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:32:20,417 - logger - INFO - ✅ save_db() завершена за 0.001с
+2026-07-09 22:32:20,708 - logger - INFO - Уведомление по криптовалюте отправлено пользователю 270319180
+2026-07-09 22:32:20,709 - logger - ERROR - Ошибка проверки курса валюты USD/RUB: name 'get_exchange_rate' is not defined
+2026-07-09 22:32:21,093 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:32:21,093 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:32:21,093 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:32:21,094 - logger - INFO - ✅ save_db() завершена за 0.000с
+2026-07-09 22:32:21,191 - logger - INFO - Уведомление по криптовалюте отправлено пользователю 270319180
+2026-07-09 22:33:21,192 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:33:21,193 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:33:21,193 - logger - ERROR - Ошибка проверки курса валюты USD/RUB: name 'get_exchange_rate' is not defined
+2026-07-09 22:34:21,199 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:34:21,199 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:34:21,199 - logger - ERROR - Ошибка проверки курса валюты USD/RUB: name 'get_exchange_rate' is not defined
+2026-07-09 22:34:40,630 - aiogram.dispatcher - INFO - Polling stopped
+2026-07-09 22:34:40,632 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ServerDisconnectedError: Server disconnected
+2026-07-09 22:34:40,632 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8646365702)
+2026-07-09 22:37:22,526 - logger - INFO - ➡️ Вход в load_db()
+2026-07-09 22:37:22,527 - logger - INFO - ✅ load_db() завершена за 0.000с
+2026-07-09 22:37:22,527 - logger - INFO - База данных загружена
+2026-07-09 22:37:22,527 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:37:22,527 - logger - INFO - ✅ save_db() завершена за 0.000с
+2026-07-09 22:37:22,527 - logger - INFO - Дублирующиеся цели очищены
+2026-07-09 22:37:22,527 - logger - INFO - Middleware защиты от спама подключён
+2026-07-09 22:37:22,528 - logger - INFO - Хендлеры зарегистрированы
+2026-07-09 22:37:22,528 - logger - INFO - TaskQueue: запущено 2 воркеров
+2026-07-09 22:37:22,528 - logger - INFO - TaskQueue запущена
+2026-07-09 22:37:22,528 - logger - INFO - AlertChecker запущен
+2026-07-09 22:37:22,528 - logger - INFO - Бот запущен
+2026-07-09 22:37:22,528 - aiogram.dispatcher - INFO - Start polling
+2026-07-09 22:37:22,528 - logger - INFO - TaskQueue: воркер Worker-1 запущен
+2026-07-09 22:37:22,528 - logger - INFO - TaskQueue: воркер Worker-2 запущен
+2026-07-09 22:37:23,141 - aiogram.dispatcher - INFO - Run polling for bot @CrazyRoot_bot id=8646365702 - 'CrazyLittleThingCalledLove'
+2026-07-09 22:37:27,534 - logger - INFO - AlertChecker запущен
+2026-07-09 22:37:51,837 - logger - INFO - 📨 Пользователь 270319180: привет
+2026-07-09 22:37:51,837 - logger - INFO - ➡️ Вход в check_rate_limit()
+2026-07-09 22:37:51,837 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:37:51,837 - logger - INFO - ✅ save_db() завершена за 0.001с
+2026-07-09 22:37:51,838 - logger - INFO - ✅ check_rate_limit() завершена за 0.001с
+2026-07-09 22:37:52,141 - logger - INFO - Классификация: 'привет...' → currency (уверенность 0.00)
+2026-07-09 22:37:52,141 - logger - WARNING - Низкая уверенность классификации: 0.00, возвращаем 'other'
+2026-07-09 22:37:52,141 - logger - INFO - Пользователь 270319180: классификатор → 'other'
+2026-07-09 22:37:52,600 - logger - INFO - ➡️ Вход в add_to_context()
+2026-07-09 22:37:52,600 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:37:52,600 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:37:52,600 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:37:52,601 - logger - INFO - ✅ save_db() завершена за 0.000с
+2026-07-09 22:37:52,601 - logger - INFO - ✅ add_to_context() завершена за 0.001с
+2026-07-09 22:37:52,601 - logger - INFO - ➡️ Вход в get_full_context()
+2026-07-09 22:37:52,601 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:37:52,601 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:37:52,601 - logger - INFO - ✅ get_full_context() завершена за 0.000с
+2026-07-09 22:37:52,961 - logger - INFO - ➡️ Вход в add_to_context()
+2026-07-09 22:37:52,961 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:37:52,961 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:37:52,961 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:37:52,962 - logger - INFO - ✅ save_db() завершена за 0.001с
+2026-07-09 22:37:52,962 - logger - INFO - ✅ add_to_context() завершена за 0.001с
+2026-07-09 22:37:52,962 - logger - INFO - YandexGPT ответил: ```
+[{"text": "Здравствуйте! Чем я могу вам помочь?"}]
+```...
+2026-07-09 22:37:52,962 - logger - INFO - Распарсено 1 задач
+2026-07-09 22:37:52,962 - logger - INFO - Задача 1/1: ['text']
+2026-07-09 22:37:52,962 - logger - INFO - ➡️ Вход в handle()
+2026-07-09 22:37:52,962 - logger - INFO - TextExecutor: отправка текста длиной 36 символов
+2026-07-09 22:37:53,354 - logger - INFO - ✅ handle() завершена за 0.392с
+2026-07-09 22:37:53,354 - logger - INFO - Пайплайн для 270319180 успешно выполнен
+2026-07-09 22:37:53,354 - logger - INFO - ✅ Хэндлер handle_multimodal отработал за 1.517с для 270319180
+2026-07-09 22:37:53,355 - aiogram.event - INFO - Update id=778791294 is handled. Duration 1516 ms by bot id=8646365702
+2026-07-09 22:38:27,535 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:38:27,535 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:38:28,162 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:38:28,162 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:38:28,162 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:38:28,163 - logger - INFO - ✅ save_db() завершена за 0.001с
+2026-07-09 22:38:28,266 - logger - INFO - Уведомление по валюте отправлено пользователю 270319180
+2026-07-09 22:38:37,024 - logger - INFO - 📨 Пользователь 270319180: следить за биткоином
+2026-07-09 22:38:37,024 - logger - INFO - ➡️ Вход в check_rate_limit()
+2026-07-09 22:38:37,024 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:38:37,025 - logger - INFO - ✅ save_db() завершена за 0.001с
+2026-07-09 22:38:37,025 - logger - INFO - ✅ check_rate_limit() завершена за 0.001с
+2026-07-09 22:38:37,025 - logger - INFO - Пользователь 270319180: словарь → криптовалюта 'bitcoin'
+2026-07-09 22:38:37,798 - logger - INFO - Пользователь 270319180: начал установку цели для bitcoin
+2026-07-09 22:38:37,798 - logger - INFO - ✅ Хэндлер handle_multimodal отработал за 0.775с для 270319180
+2026-07-09 22:38:37,798 - aiogram.event - INFO - Update id=778791295 is handled. Duration 781 ms by bot id=8646365702
+2026-07-09 22:38:40,689 - logger - INFO - Пользователь 270319180: ввёл цель 63000.00 для bitcoin
+2026-07-09 22:38:40,690 - aiogram.event - INFO - Update id=778791296 is handled. Duration 109 ms by bot id=8646365702
+2026-07-09 22:38:42,416 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:38:42,417 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:38:42,417 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:38:42,417 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:38:42,417 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:38:42,418 - logger - INFO - ✅ save_db() завершена за 0.001с
+2026-07-09 22:38:42,418 - logger - INFO - Добавлена цель для 270319180: bitcoin = 63000.0 (crypto)
+2026-07-09 22:38:42,828 - logger - INFO - Пользователь 270319180: цель для bitcoin установлена на 63000.00 USD
+2026-07-09 22:38:42,829 - aiogram.event - INFO - Update id=778791297 is handled. Duration 515 ms by bot id=8646365702
+2026-07-09 22:38:49,211 - logger - INFO - 📨 Пользователь 270319180: следить за долларом
+2026-07-09 22:38:49,211 - logger - INFO - ➡️ Вход в check_rate_limit()
+2026-07-09 22:38:49,211 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:38:49,212 - logger - INFO - ✅ save_db() завершена за 0.001с
+2026-07-09 22:38:49,212 - logger - INFO - ✅ check_rate_limit() завершена за 0.001с
+2026-07-09 22:38:49,288 - logger - INFO - Классификация: 'следить за долларом...' → currency (уверенность 1.00)
+2026-07-09 22:38:49,288 - logger - INFO - Пользователь 270319180: классификатор → 'currency'
+2026-07-09 22:38:49,781 - logger - INFO - Пользователь 270319180: начал установку цели для USD/RUB
+2026-07-09 22:38:49,781 - logger - INFO - ✅ Хэндлер handle_multimodal отработал за 0.569с для 270319180
+2026-07-09 22:38:49,781 - aiogram.event - INFO - Update id=778791298 is handled. Duration 577 ms by bot id=8646365702
+2026-07-09 22:38:52,408 - logger - INFO - Пользователь 270319180: ввёл цель 76.00 для USD/RUB
+2026-07-09 22:38:52,408 - aiogram.event - INFO - Update id=778791299 is handled. Duration 172 ms by bot id=8646365702
+2026-07-09 22:38:54,098 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:38:54,098 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:38:54,098 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:38:54,098 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:38:54,098 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:38:54,100 - logger - INFO - ✅ save_db() завершена за 0.002с
+2026-07-09 22:38:54,100 - logger - INFO - Добавлена цель для 270319180: USD/RUB = 76.0 (currency)
+2026-07-09 22:38:54,196 - logger - INFO - Пользователь 270319180: цель для USD/RUB установлена на 76.00
+2026-07-09 22:38:54,196 - aiogram.event - INFO - Update id=778791300 is handled. Duration 172 ms by bot id=8646365702
+2026-07-09 22:39:28,274 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:39:28,274 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:39:28,764 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:39:28,764 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:39:28,764 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:39:28,765 - logger - INFO - ✅ save_db() завершена за 0.001с
+2026-07-09 22:39:28,864 - logger - INFO - Уведомление по криптовалюте отправлено пользователю 270319180
+2026-07-09 22:39:29,334 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:39:29,334 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:39:29,334 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:39:29,336 - logger - INFO - ✅ save_db() завершена за 0.001с
+2026-07-09 22:39:29,433 - logger - INFO - Уведомление по валюте отправлено пользователю 270319180
+2026-07-09 22:40:32,496 - logger - INFO - ➡️ Вход в load_db()
+2026-07-09 22:40:32,496 - logger - INFO - ✅ load_db() завершена за 0.000с
+2026-07-09 22:40:32,496 - logger - INFO - База данных загружена
+2026-07-09 22:40:32,496 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:40:32,497 - logger - INFO - ✅ save_db() завершена за 0.001с
+2026-07-09 22:40:32,497 - logger - INFO - Дублирующиеся цели очищены
+2026-07-09 22:40:32,497 - logger - INFO - Middleware защиты от спама подключён
+2026-07-09 22:40:32,497 - logger - INFO - Хендлеры зарегистрированы
+2026-07-09 22:40:32,497 - logger - INFO - TaskQueue: запущено 2 воркеров
+2026-07-09 22:40:32,498 - logger - INFO - TaskQueue запущена
+2026-07-09 22:40:32,498 - logger - INFO - AlertChecker запущен
+2026-07-09 22:40:32,498 - logger - INFO - Бот запущен
+2026-07-09 22:40:32,498 - aiogram.dispatcher - INFO - Start polling
+2026-07-09 22:40:32,498 - logger - INFO - TaskQueue: воркер Worker-1 запущен
+2026-07-09 22:40:32,498 - logger - INFO - TaskQueue: воркер Worker-2 запущен
+2026-07-09 22:40:32,754 - aiogram.dispatcher - INFO - Run polling for bot @CrazyRoot_bot id=8646365702 - 'CrazyLittleThingCalledLove'
+2026-07-09 22:40:37,507 - logger - INFO - AlertChecker запущен
+2026-07-09 22:40:40,460 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:40:40,460 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:40:40,689 - aiogram.event - INFO - Update id=778791301 is handled. Duration 234 ms by bot id=8646365702
+2026-07-09 22:40:49,530 - logger - INFO - 📨 Пользователь 270319180: следить за биткоином
+2026-07-09 22:40:49,530 - logger - INFO - ➡️ Вход в check_rate_limit()
+2026-07-09 22:40:49,530 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:40:49,531 - logger - INFO - ✅ save_db() завершена за 0.001с
+2026-07-09 22:40:49,531 - logger - INFO - ✅ check_rate_limit() завершена за 0.001с
+2026-07-09 22:40:49,531 - logger - INFO - Пользователь 270319180: словарь → криптовалюта 'bitcoin'
+2026-07-09 22:40:50,031 - logger - INFO - Пользователь 270319180: начал установку цели для bitcoin
+2026-07-09 22:40:50,031 - logger - INFO - ✅ Хэндлер handle_multimodal отработал за 0.501с для 270319180
+2026-07-09 22:40:50,031 - aiogram.event - INFO - Update id=778791302 is handled. Duration 515 ms by bot id=8646365702
+2026-07-09 22:40:52,739 - logger - INFO - Пользователь 270319180: ввёл цель 63000.00 для bitcoin
+2026-07-09 22:40:52,740 - aiogram.event - INFO - Update id=778791303 is handled. Duration 108 ms by bot id=8646365702
+2026-07-09 22:40:54,155 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:40:54,155 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:40:54,155 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:40:54,155 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:40:54,155 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:40:54,156 - logger - INFO - ✅ save_db() завершена за 0.001с
+2026-07-09 22:40:54,156 - logger - INFO - Добавлена цель для 270319180: bitcoin = 63000.0 (crypto)
+2026-07-09 22:40:54,252 - logger - INFO - Пользователь 270319180: цель для bitcoin установлена на 63000.00 USD
+2026-07-09 22:40:54,252 - aiogram.event - INFO - Update id=778791304 is handled. Duration 172 ms by bot id=8646365702
+2026-07-09 22:40:58,985 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:40:58,985 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:40:59,131 - logger - INFO - Пользователь 270319180 запросил список целей
+2026-07-09 22:40:59,131 - aiogram.event - INFO - Update id=778791305 is handled. Duration 141 ms by bot id=8646365702
+2026-07-09 22:41:37,503 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:41:37,504 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:41:37,914 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:41:37,915 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:41:37,915 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:41:37,916 - logger - INFO - ✅ save_db() завершена за 0.001с
+2026-07-09 22:41:38,010 - logger - INFO - Уведомление по криптовалюте отправлено пользователю 270319180
+2026-07-09 22:42:34,827 - logger - INFO - 📨 Пользователь 270319180: сгенерируй море
+2026-07-09 22:42:34,828 - logger - INFO - ➡️ Вход в check_rate_limit()
+2026-07-09 22:42:34,828 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:42:34,828 - logger - INFO - ✅ save_db() завершена за 0.001с
+2026-07-09 22:42:34,829 - logger - INFO - ✅ check_rate_limit() завершена за 0.001с
+2026-07-09 22:42:35,129 - logger - INFO - Классификация: 'сгенерируй море...' → currency (уверенность 0.00)
+2026-07-09 22:42:35,129 - logger - WARNING - Низкая уверенность классификации: 0.00, возвращаем 'other'
+2026-07-09 22:42:35,129 - logger - INFO - Пользователь 270319180: классификатор → 'other'
+2026-07-09 22:42:35,216 - logger - INFO - ➡️ Вход в add_to_context()
+2026-07-09 22:42:35,217 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:42:35,217 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:42:35,217 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:42:35,218 - logger - INFO - ✅ save_db() завершена за 0.001с
+2026-07-09 22:42:35,218 - logger - INFO - ✅ add_to_context() завершена за 0.001с
+2026-07-09 22:42:35,218 - logger - INFO - ➡️ Вход в get_full_context()
+2026-07-09 22:42:35,218 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:42:35,218 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:42:35,218 - logger - INFO - ✅ get_full_context() завершена за 0.000с
+2026-07-09 22:42:35,589 - logger - INFO - ➡️ Вход в add_to_context()
+2026-07-09 22:42:35,589 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:42:35,589 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:42:35,589 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 22:42:35,590 - logger - INFO - ✅ save_db() завершена за 0.000с
+2026-07-09 22:42:35,590 - logger - INFO - ✅ add_to_context() завершена за 0.000с
+2026-07-09 22:42:35,590 - logger - INFO - YandexGPT ответил: ```
+[{"image": "Sea with waves, bright sunlight, clear sky, realistic style"}]
+```...
+2026-07-09 22:42:35,590 - logger - INFO - Распарсено 1 задач
+2026-07-09 22:42:35,590 - logger - INFO - Задача 1/1: ['image']
+2026-07-09 22:42:35,590 - logger - INFO - ➡️ Вход в handle()
+2026-07-09 22:42:35,590 - logger - INFO - ➡️ Вход в handle()
+2026-07-09 22:42:35,590 - logger - INFO - ImageExecutor: промпт для картинки: Sea with waves, bright sunlight, clear sky, realis...
+2026-07-09 22:42:35,691 - logger - INFO - TaskQueue: задача image для пользователя 270319180 поставлена в очередь
+2026-07-09 22:42:35,691 - logger - INFO - ImageExecutor: задача на генерацию для 270319180 поставлена в очередь
+2026-07-09 22:42:35,691 - logger - INFO - ✅ handle() завершена за 0.101с
+2026-07-09 22:42:35,691 - logger - INFO - ✅ handle() завершена за 0.101с
+2026-07-09 22:42:35,692 - logger - INFO - Пайплайн для 270319180 успешно выполнен
+2026-07-09 22:42:35,692 - logger - INFO - ✅ Хэндлер handle_multimodal отработал за 0.864с для 270319180
+2026-07-09 22:42:35,692 - aiogram.event - INFO - Update id=778791306 is handled. Duration 875 ms by bot id=8646365702
+2026-07-09 22:42:35,692 - logger - INFO - TaskQueue: воркер Worker-1 обрабатывает image для 270319180
+2026-07-09 22:42:35,692 - logger - INFO - ➡️ Вход в _generate_and_send_image()
+2026-07-09 22:43:11,825 - logger - INFO - ImageExecutor: картинка сгенерирована, размер 123270 байт
+2026-07-09 22:43:11,830 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 22:43:11,830 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 22:43:12,226 - logger - INFO - ImageExecutor: картинка отправлена пользователю
+2026-07-09 22:43:12,226 - logger - INFO - ✅ _generate_and_send_image() завершена за 36.534с
+2026-07-09 22:43:12,226 - logger - INFO - TaskQueue: воркер Worker-1 завершил image для 270319180

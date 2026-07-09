@@ -15,15 +15,16 @@ from database import check_rate_limit
 from logger import log_info, log_warning, log_error
 from services.dialog_service import get_multimodal_response
 from services.chain import build_chain
-from services.classifier import classify_intent          # <-- НОВЫЙ ИМПОРТ
+from services.classifier import classify_intent
 from handlers.currency import handle_currency_request, handle_crypto_request
 from services.crypto_api import extract_crypto
-
+from logger import log_info, log_warning, log_error, log_handler
 
 router = Router()
 
 
 @router.message(~F.text.startswith("/"))
+@log_handler
 async def handle_multimodal(message: Message, state: FSMContext):
     """
     Обрабатывает все текстовые сообщения, кроме команд.
@@ -47,23 +48,36 @@ async def handle_multimodal(message: Message, state: FSMContext):
         log_warning(f"Пользователь {user_id} превысил лимит запросов")
         return
 
-    # 3. Классифицируем намерение
-    # Сначала проверяем криптовалюты по словарю
+    # 3. ГИБРИДНАЯ КЛАССИФИКАЦИЯ
+    # Сначала проверяем по словарю (надёжно)
     crypto_hint = extract_crypto(user_input)
     if crypto_hint:
         intent = "crypto"
-        log_info(f"Пользователь {user_id}: обнаружена криптовалюта '{crypto_hint}'")
+        log_info(f"Пользователь {user_id}: словарь → криптовалюта '{crypto_hint}'")
     else:
+        # Если словарь не сработал — идём в классификатор
         intent = await classify_intent(user_input)
-        log_info(f"Пользователь {user_id}: намерение '{intent}'")
+        log_info(f"Пользователь {user_id}: классификатор → '{intent}'")
 
+        # Fallback: если классификатор сказал "other", но есть признаки криптовалюты
+        # Fallback: если классификатор сказал "other", но есть признаки криптовалюты
+        if intent == "other" and (
+                "бит" in user_input.lower() or
+                "btc" in user_input.lower() or
+                "эфир" in user_input.lower() or
+                "eth" in user_input.lower() or
+                "usdt" in user_input.lower() or
+                "следить" in user_input.lower()  # <-- ДОБАВИЛИ
+        ):
+            intent = "crypto"
+            log_info(f"Пользователь {user_id}: fallback → криптовалюта по ключевым словам")
 
     # 4. Маршрутизация по намерению
-    if intent in ["currency", "crypto"]:
-        if intent == "currency":
-            await handle_currency_request(message, user_input)
-        else:  # crypto
-            await handle_crypto_request(message, user_input)
+    if intent == "currency":
+        await handle_currency_request(message, user_input, state)
+        return
+    elif intent == "crypto":
+        await handle_crypto_request(message, user_input, state)
         return
 
     # 5. Для "generate" и "other" — мультимодальный пайплайн

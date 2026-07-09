@@ -151,12 +151,25 @@ def check_rate_limit(user_id: int) -> bool:
 
 # --- ЦЕЛИ ДЛЯ УВЕДОМЛЕНИЙ ---
 
-def add_alert(user_id: int, coin: str, target: float):
-    """Добавляет цель для уведомления."""
+def add_alert(user_id: int, item: str, target: float, alert_type: str = "crypto") -> None:
+    """
+    Добавляет цель для уведомления (валюты или криптовалюты).
+
+    Args:
+        user_id: ID пользователя
+        item: Код валюты ("USD/RUB") или криптовалюты ("bitcoin")
+        target: Целевая цена
+        alert_type: "currency" или "crypto"
+    """
     user = get_user(user_id)
-    user.alerts.append({"coin": coin, "target": target, "active": True})
+    user.alerts.append({
+        "type": alert_type,
+        "item": item,
+        "target": target,
+        "active": True
+    })
     save_db()
-    log_info(f"Добавлена цель для {user_id}: {coin} = {target}")
+    log_info(f"Добавлена цель для {user_id}: {item} = {target} ({alert_type})")
 
 
 def get_active_alerts(user_id: int) -> list:

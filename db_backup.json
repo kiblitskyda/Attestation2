@@ -13,6 +13,14 @@
         },
         {
           "role": "user",
+          "text": "63000"
+        },
+        {
+          "role": "assistant",
+          "text": "```\n[{\"text\": \"Извините, я не понял запрос. Повторите, пожалуйста.\"}]\n```"
+        },
+        {
+          "role": "user",
           "text": "привет"
         },
         {
@@ -21,33 +29,63 @@
         },
         {
           "role": "user",
-          "text": "курс биткоина"
+          "text": "сгенерируй море"
         },
         {
           "role": "assistant",
-          "text": "```\n[{\"text\": \"Извините, я не могу предоставить актуальный курс биткоина. Для этого вам нужно воспользоваться специализированными финансовыми сервисами.\"}]\n```"
-        },
-        {
-          "role": "user",
-          "text": "курс биткоина"
-        },
-        {
-          "role": "assistant",
-          "text": "```\n[{\"text\": \"Извините, я не могу предоставить актуальный курс биткоина. Для этого вам нужно воспользоваться специализированными финансовыми сервисами.\"}]\n```"
+          "text": "```\n[{\"image\": \"Sea with waves, bright sunlight, clear sky, realistic style\"}]\n```"
         }
       ],
       "role": "user",
-      "alerts": []
+      "alerts": [
+        {
+          "coin": "bitcoin",
+          "target": 63000.0,
+          "active": false
+        },
+        {
+          "type": "crypto",
+          "item": "bitcoin",
+          "target": 63000.0,
+          "active": false
+        },
+        {
+          "type": "currency",
+          "item": "USD/RUB",
+          "target": 76.0,
+          "active": false
+        },
+        {
+          "type": "crypto",
+          "item": "bitcoin",
+          "target": 63000.0,
+          "active": false
+        },
+        {
+          "type": "crypto",
+          "item": "bitcoin",
+          "target": 63000.0,
+          "active": false
+        },
+        {
+          "type": "currency",
+          "item": "USD/RUB",
+          "target": 76.0,
+          "active": false
+        },
+        {
+          "type": "crypto",
+          "item": "bitcoin",
+          "target": 63000.0,
+          "active": false
+        }
+      ]
     }
   },
   "rate_limits": {
     "270319180": {
-      "count": 2,
-      "last_request": "2026-07-09T21:13:45.962266"
-    },
-    "270319180": {
-      "count": 0,
-      "last_request": "2026-07-09T21:15:00.434061"
+      "count": 1,
+      "last_request": "2026-07-09T22:42:34.828131"
     }
   }
 }

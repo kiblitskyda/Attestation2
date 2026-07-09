@@ -15,23 +15,20 @@ from logger import log_error
 def extract_crypto(text: str) -> str | None:
     """
     Извлекает из текста код криптовалюты (bitcoin, ethereum, tether) по словарю.
-
-    Args:
-        text: Текст запроса пользователя
-
-    Returns:
-        Код криптовалюты (например, "bitcoin") или None
     """
     text_lower = text.lower()
     crypto_map = {
-        "биткоин": "bitcoin", "биткойн": "bitcoin", "btc": "bitcoin",
-        "за биткоином": "bitcoin",
-        "эфир": "ethereum", "eth": "ethereum",
+        "биткоин": "bitcoin",
+        "биткойн": "bitcoin",
+        "btc": "bitcoin",
+        "эфир": "ethereum",
+        "eth": "ethereum",
         "usdt": "tether",
     }
 
     for word, code in crypto_map.items():
-        if re.search(r'\b' + re.escape(word) + r'\b', text_lower):
+        # Ищем слово как часть текста (без привязки к границам)
+        if word in text_lower:
             return code
 
     return None

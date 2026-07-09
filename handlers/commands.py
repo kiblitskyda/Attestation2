@@ -11,6 +11,11 @@ from aiogram.types import Message
 from database import clear_context
 from logger import log_info
 
+from database import get_context
+
+from database import get_active_alerts
+import pandas as pd
+
 router = Router()
 
 
@@ -61,3 +66,105 @@ async def handle_clean(message: Message):
     clear_context(user_id)
     await message.answer("🧹 История диалога очищена! Можно начинать новую тему.")
     log_info(f"Пользователь {user_id} очистил контекст")
+
+@router.message(Command("stats"))
+async def handle_stats(message: Message):
+    """
+    Показывает статистику по диалогам пользователя.
+    """
+    user_id = message.from_user.id
+    context = list(get_context(user_id))
+
+    if not context:
+        await message.answer("📭 Нет данных для статистики. Напишите что-нибудь боту.")
+        return
+
+    # Преобразуем данные в DataFrame
+    data = []
+    for msg in context:
+        text = msg.get("text", "")
+        data.append({
+            "role": msg.get("role"),
+            "length": len(text),
+            "words": len(text.split())
+        })
+
+    import pandas as pd
+    df = pd.DataFrame(data)
+
+    total = len(df)
+    user_msgs = len(df[df["role"] == "user"])
+    bot_msgs = len(df[df["role"] == "assistant"])
+    avg_len = df["length"].mean()
+    max_len = df["length"].max()
+    min_len = df["length"].min()
+    total_words = df["words"].sum()
+    avg_words = df["words"].mean()
+
+    await message.answer(
+        f"📊 **Ваша статистика**\n\n"
+        f"Всего сообщений: {total}\n"
+        f"  • Ваших: {user_msgs}\n"
+        f"  • Ответов бота: {bot_msgs}\n\n"
+        f"📝 Длина сообщений:\n"
+        f"  • Средняя: {avg_len:.1f} символов\n"
+        f"  • Самое длинное: {max_len}\n"
+        f"  • Самое короткое: {min_len}\n\n"
+        f"🔤 Слова:\n"
+        f"  • Всего слов: {total_words}\n"
+        f"  • В среднем: {avg_words:.1f} слов/сообщение"
+    )
+    log_info(f"Пользователь {user_id} запросил статистику")
+
+@router.message(Command("alerts"))
+async def handle_alerts(message: Message):
+    """
+    Показывает все активные цели пользователя (валюты и криптовалюты).
+    """
+    user_id = message.from_user.id
+    alerts = get_active_alerts(user_id)
+
+    if not alerts:
+        await message.answer("📭 У вас нет активных целей. Чтобы установить цель, скажите:\n"
+                             "• 'следить за биткоином'\n"
+                             "• 'следить за долларом'")
+        return
+
+    # Преобразуем данные в DataFrame
+    data = []
+    for alert in alerts:
+        alert_type = alert.get("type", "crypto")
+        item = alert.get("item", alert.get("coin", "—"))  # совместимость со старыми записями
+        target = alert.get("target", 0)
+
+        if alert_type == "currency":
+            type_label = "💰 Валюта"
+            # item имеет формат "USD/RUB"
+        else:
+            type_label = "🪙 Криптовалюта"
+            item = item.title()  # bitcoin → Bitcoin
+
+        data.append({
+            "Тип": type_label,
+            "Инструмент": item,
+            "Цель": f"{target:.2f}"
+        })
+
+    df = pd.DataFrame(data)
+
+    # Формируем сообщение
+    # Если целей больше 10, показываем только первые 10 и говорим, что есть ещё
+    display_df = df.head(10)
+    table = display_df.to_string(index=False)
+
+    header = f"📊 **Ваши активные цели ({len(alerts)})**\n\n"
+    if len(alerts) > 10:
+        header += f"*(показаны первые 10 из {len(alerts)})*\n\n"
+
+    await message.answer(
+        f"{header}"
+        f"<pre>{table}</pre>",
+        parse_mode="HTML"
+    )
+
+    log_info(f"Пользователь {user_id} запросил список целей")

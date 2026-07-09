@@ -7,12 +7,17 @@
 from aiogram import Router, F
 from aiogram.filters import Command, StateFilter
 from aiogram.fsm.context import FSMContext
-from aiogram.types import Message
+from aiogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 
 from states.poll import Poll
 from logger import log_info, log_error
 
 router = Router()
+
+# --- КЛАВИАТУРА ДЛЯ ОТМЕНЫ ОПРОСА ---
+cancel_keyboard = InlineKeyboardMarkup(inline_keyboard=[
+    [InlineKeyboardButton(text="❌ Отменить опрос", callback_data="cancel_poll")]
+])
 
 
 # --- ЗАПУСК ОПРОСА ---
@@ -26,17 +31,18 @@ async def cmd_start(message: Message, state: FSMContext):
     await state.set_state(Poll.name)
     await message.answer(
         "📝 Давайте познакомимся!\n\n"
-        "Как вас зовут? (Введите имя)"
+        "Как вас зовут? (Введите имя)",
+        reply_markup=cancel_keyboard
     )
     log_info(f"Пользователь {message.from_user.id} начал опрос")
 
 
-# --- ОТМЕНА ОПРОСА ---
+# --- ОТМЕНА ОПРОСА ЧЕРЕЗ КОМАНДУ ---
 
 @router.message(Command("cancel"))
 async def cmd_cancel(message: Message, state: FSMContext):
     """
-    Отменяет опрос: очищает состояние и сообщает пользователю.
+    Отменяет опрос через команду /cancel.
     """
     current_state = await state.get_state()
     if current_state is None:
@@ -47,7 +53,25 @@ async def cmd_cancel(message: Message, state: FSMContext):
     await message.answer(
         "❌ Опрос отменён. Если захотите пройти снова — отправьте /start."
     )
-    log_info(f"Пользователь {message.from_user.id} отменил опрос")
+    log_info(f"Пользователь {message.from_user.id} отменил опрос через команду")
+
+
+# --- ОТМЕНА ОПРОСА ЧЕРЕЗ КНОПКУ ---
+
+@router.callback_query(lambda c: c.data == "cancel_poll")
+async def process_cancel_poll(callback: CallbackQuery, state: FSMContext):
+    """
+    Обрабатывает нажатие на кнопку 'Отменить опрос'.
+    """
+    await callback.answer()
+    current_state = await state.get_state()
+    if current_state is None:
+        await callback.message.edit_text("❌ Вы не проходите опрос.")
+        return
+
+    await state.clear()
+    await callback.message.edit_text("❌ Опрос отменён. Если захотите пройти снова — отправьте /start.")
+    log_info(f"Пользователь {callback.from_user.id} отменил опрос через кнопку")
 
 
 # --- ОБРАБОТЧИКИ СОСТОЯНИЙ ---
@@ -59,7 +83,10 @@ async def process_name(message: Message, state: FSMContext):
     """
     await state.update_data(name=message.text)
     await state.set_state(Poll.age)
-    await message.answer("Сколько вам лет? (Введите число)")
+    await message.answer(
+        "Сколько вам лет? (Введите число)",
+        reply_markup=cancel_keyboard
+    )
 
 
 @router.message(Poll.age, F.text)
@@ -74,7 +101,10 @@ async def process_age(message: Message, state: FSMContext):
 
     await state.update_data(age=message.text)
     await state.set_state(Poll.city)
-    await message.answer("В каком городе вы живёте?")
+    await message.answer(
+        "В каком городе вы живёте?",
+        reply_markup=cancel_keyboard
+    )
 
 
 @router.message(Poll.city, F.text)
@@ -84,7 +114,10 @@ async def process_city(message: Message, state: FSMContext):
     """
     await state.update_data(city=message.text)
     await state.set_state(Poll.activity)
-    await message.answer("Какая ваша основная деятельность? (например, учёба, работа)")
+    await message.answer(
+        "Какая ваша основная деятельность? (например, учёба, работа)",
+        reply_markup=cancel_keyboard
+    )
 
 
 @router.message(Poll.activity, F.text)
