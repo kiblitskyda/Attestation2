@@ -1,25 +1,22 @@
 # handlers/commands.py
 
 """
-Обработчики команд: /start, /help, /clean
+Обработчики команд: /start, /help, /clean, /stats, /alerts
 """
 
 from aiogram import Router, F
 from aiogram.filters import Command
 from aiogram.types import Message
 
-from database import clear_context
-from logger import log_info
-
-from database import get_context
-
-from database import get_active_alerts
+from database import clear_context, get_context, get_active_alerts
+from logger import log_info, log_handler
 import pandas as pd
 
 router = Router()
 
 
 @router.message(Command("start"))
+@log_handler
 async def handle_start(message: Message):
     """Приветствие и инструкция по использованию бота."""
     user_name = message.from_user.first_name or "пользователь"
@@ -41,6 +38,7 @@ async def handle_start(message: Message):
 
 
 @router.message(Command("help"))
+@log_handler
 async def handle_help(message: Message):
     """Показывает справку."""
     await message.answer(
@@ -53,13 +51,16 @@ async def handle_help(message: Message):
         "**Команды:**\n"
         "/start — приветствие\n"
         "/help — эта справка\n"
-        "/clean — очистить историю диалога\n\n"
+        "/clean — очистить историю диалога\n"
+        "/stats — статистика по диалогам\n"
+        "/alerts — список активных целей\n\n"
         "**Важно:** Я запоминаю историю диалога, чтобы отвечать связно. "
         "Если хотите начать новую тему — используйте /clean."
     )
 
 
 @router.message(Command("clean"))
+@log_handler
 async def handle_clean(message: Message):
     """Очищает историю диалога пользователя."""
     user_id = message.from_user.id
@@ -67,7 +68,9 @@ async def handle_clean(message: Message):
     await message.answer("🧹 История диалога очищена! Можно начинать новую тему.")
     log_info(f"Пользователь {user_id} очистил контекст")
 
+
 @router.message(Command("stats"))
+@log_handler
 async def handle_stats(message: Message):
     """
     Показывает статистику по диалогам пользователя.
@@ -89,7 +92,6 @@ async def handle_stats(message: Message):
             "words": len(text.split())
         })
 
-    import pandas as pd
     df = pd.DataFrame(data)
 
     total = len(df)
@@ -116,7 +118,9 @@ async def handle_stats(message: Message):
     )
     log_info(f"Пользователь {user_id} запросил статистику")
 
+
 @router.message(Command("alerts"))
+@log_handler
 async def handle_alerts(message: Message):
     """
     Показывает все активные цели пользователя (валюты и криптовалюты).
@@ -125,21 +129,22 @@ async def handle_alerts(message: Message):
     alerts = get_active_alerts(user_id)
 
     if not alerts:
-        await message.answer("📭 У вас нет активных целей. Чтобы установить цель, скажите:\n"
-                             "• 'следить за биткоином'\n"
-                             "• 'следить за долларом'")
+        await message.answer(
+            "📭 У вас нет активных целей. Чтобы установить цель, скажите:\n"
+            "• 'следить за биткоином'\n"
+            "• 'следить за долларом'"
+        )
         return
 
     # Преобразуем данные в DataFrame
     data = []
     for alert in alerts:
         alert_type = alert.get("type", "crypto")
-        item = alert.get("item", alert.get("coin", "—"))  # совместимость со старыми записями
+        item = alert.get("item", alert.get("coin", "—"))
         target = alert.get("target", 0)
 
         if alert_type == "currency":
             type_label = "💰 Валюта"
-            # item имеет формат "USD/RUB"
         else:
             type_label = "🪙 Криптовалюта"
             item = item.title()  # bitcoin → Bitcoin
@@ -152,8 +157,7 @@ async def handle_alerts(message: Message):
 
     df = pd.DataFrame(data)
 
-    # Формируем сообщение
-    # Если целей больше 10, показываем только первые 10 и говорим, что есть ещё
+    # Если целей больше 10, показываем только первые 10
     display_df = df.head(10)
     table = display_df.to_string(index=False)
 

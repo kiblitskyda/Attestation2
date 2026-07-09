@@ -9,7 +9,7 @@ from aiogram.fsm.context import FSMContext
 from aiogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 
 from database import add_alert, get_user, save_db
-from logger import log_info, log_error, log_warning
+from logger import log_info, log_error, log_warning, log_handler  # <-- ДОБАВЛЕН log_handler
 from services.currency_api import extract_currencies, get_exchange_rate
 from services.crypto_api import extract_crypto, get_crypto_price
 from states.currency import CurrencyStates
@@ -116,6 +116,7 @@ async def handle_crypto_request(message: Message, text: str, state: FSMContext):
 # --- FSM: ОЖИДАНИЕ ЦЕЛИ ---
 
 @router.message(CurrencyStates.waiting_for_target, F.text)
+@log_handler  # <-- ДОБАВЛЕН
 async def process_target(message: Message, state: FSMContext):
     """
     Пользователь вводит целевую цену (для валюты или криптовалюты).
@@ -176,6 +177,9 @@ async def process_confirm_callback(callback: CallbackQuery, state: FSMContext):
     """
     user_id = callback.from_user.id
     await callback.answer()
+
+    # Ручной лог для callback (т.к. log_handler не работает с callback)
+    log_info(f"Callback от пользователя {user_id}: {callback.data}")
 
     if callback.data == "confirm_yes":
         data = await state.get_data()
@@ -257,12 +261,14 @@ async def process_confirm_callback(callback: CallbackQuery, state: FSMContext):
 # --- ОБРАБОТКА НЕКОРРЕКТНОГО ВВОДА В FSM ---
 
 @router.message(CurrencyStates.waiting_for_target)
+@log_handler  # <-- ДОБАВЛЕН
 async def process_target_invalid(message: Message):
     """Если пользователь отправил не текст в состоянии waiting_for_target."""
     await message.answer("❌ Пожалуйста, введите число (например, 63000)")
 
 
 @router.message(CurrencyStates.waiting_for_confirmation)
+@log_handler  # <-- ДОБАВЛЕН
 async def process_confirmation_invalid(message: Message):
     """Если пользователь отправил не текст в состоянии waiting_for_confirmation."""
     await message.answer("❌ Пожалуйста, используйте кнопки для подтверждения.")

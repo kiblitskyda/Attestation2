@@ -25,8 +25,8 @@ def generate(prompt: str) -> bytes:
     params = {
         "type": "GENERATE",
         "numImages": 1,
-        "width": 256,
-        "height": 256,
+        "width": 512,
+        "height": 512,
         "generateParams": {"query": prompt},
     }
     response = requests.post(
