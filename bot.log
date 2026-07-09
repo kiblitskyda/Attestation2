@@ -1,0 +1,143 @@
+2026-07-09 21:13:26,475 - logger - INFO - ➡️ Вход в load_db()
+2026-07-09 21:13:26,476 - logger - INFO - ✅ load_db() завершена за 0.000с
+2026-07-09 21:13:26,476 - logger - INFO - База данных загружена
+2026-07-09 21:13:26,476 - logger - INFO - Middleware защиты от спама подключён
+2026-07-09 21:13:26,476 - logger - INFO - Хендлеры зарегистрированы
+2026-07-09 21:13:26,476 - logger - INFO - TaskQueue: запущено 2 воркеров
+2026-07-09 21:13:26,476 - logger - INFO - TaskQueue запущена
+2026-07-09 21:13:26,476 - logger - INFO - AlertChecker запущен
+2026-07-09 21:13:26,476 - logger - INFO - Бот запущен
+2026-07-09 21:13:26,476 - aiogram.dispatcher - INFO - Start polling
+2026-07-09 21:13:26,476 - logger - INFO - TaskQueue: воркер Worker-1 запущен
+2026-07-09 21:13:26,476 - logger - INFO - TaskQueue: воркер Worker-2 запущен
+2026-07-09 21:13:26,993 - aiogram.dispatcher - INFO - Run polling for bot @CrazyRoot_bot id=8646365702 - 'CrazyLittleThingCalledLove'
+2026-07-09 21:13:31,467 - logger - INFO - AlertChecker запущен
+2026-07-09 21:13:34,676 - logger - INFO - ➡️ Вход в check_rate_limit()
+2026-07-09 21:13:34,676 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 21:13:34,677 - logger - INFO - ✅ save_db() завершена за 0.000с
+2026-07-09 21:13:34,677 - logger - INFO - ✅ check_rate_limit() завершена за 0.000с
+2026-07-09 21:13:34,963 - logger - INFO - Классификация: 'привет...' → currency (уверенность 0.00)
+2026-07-09 21:13:34,964 - logger - WARNING - Низкая уверенность классификации: 0.00, возвращаем 'other'
+2026-07-09 21:13:34,964 - logger - INFO - Пользователь 270319180: намерение 'other'
+2026-07-09 21:13:35,230 - logger - INFO - ➡️ Вход в add_to_context()
+2026-07-09 21:13:35,230 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 21:13:35,230 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 21:13:35,230 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 21:13:35,231 - logger - INFO - ✅ save_db() завершена за 0.001с
+2026-07-09 21:13:35,231 - logger - INFO - ✅ add_to_context() завершена за 0.001с
+2026-07-09 21:13:35,231 - logger - INFO - ➡️ Вход в get_full_context()
+2026-07-09 21:13:35,231 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 21:13:35,231 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 21:13:35,231 - logger - INFO - ✅ get_full_context() завершена за 0.000с
+2026-07-09 21:13:35,769 - logger - INFO - ➡️ Вход в add_to_context()
+2026-07-09 21:13:35,769 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 21:13:35,769 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 21:13:35,769 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 21:13:35,770 - logger - INFO - ✅ save_db() завершена за 0.000с
+2026-07-09 21:13:35,770 - logger - INFO - ✅ add_to_context() завершена за 0.001с
+2026-07-09 21:13:35,770 - logger - INFO - YandexGPT ответил: ```
+[{"text": "Здравствуйте! Чем я могу вам помочь?"}]
+```...
+2026-07-09 21:13:35,770 - logger - INFO - Распарсено 1 задач
+2026-07-09 21:13:35,770 - logger - INFO - Задача 1/1: ['text']
+2026-07-09 21:13:35,770 - logger - INFO - ➡️ Вход в handle()
+2026-07-09 21:13:35,770 - logger - INFO - TextExecutor: отправка текста длиной 36 символов
+2026-07-09 21:13:35,887 - logger - INFO - ✅ handle() завершена за 0.116с
+2026-07-09 21:13:35,887 - logger - INFO - Пайплайн для 270319180 успешно выполнен
+2026-07-09 21:13:35,887 - aiogram.event - INFO - Update id=778791251 is handled. Duration 1218 ms by bot id=8646365702
+2026-07-09 21:13:41,466 - logger - INFO - ➡️ Вход в check_rate_limit()
+2026-07-09 21:13:41,466 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 21:13:41,467 - logger - INFO - ✅ save_db() завершена за 0.001с
+2026-07-09 21:13:41,467 - logger - INFO - ✅ check_rate_limit() завершена за 0.001с
+2026-07-09 21:13:41,541 - logger - INFO - Классификация: 'курс доллара...' → currency (уверенность 1.00)
+2026-07-09 21:13:41,541 - logger - INFO - Пользователь 270319180: намерение 'currency'
+2026-07-09 21:13:42,118 - logger - INFO - Пользователь 270319180: курс USD/RUB = 76.80
+2026-07-09 21:13:42,118 - aiogram.event - INFO - Update id=778791252 is handled. Duration 639 ms by bot id=8646365702
+2026-07-09 21:13:45,962 - logger - INFO - ➡️ Вход в check_rate_limit()
+2026-07-09 21:13:45,962 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 21:13:45,963 - logger - INFO - ✅ save_db() завершена за 0.001с
+2026-07-09 21:13:45,963 - logger - INFO - ✅ check_rate_limit() завершена за 0.001с
+2026-07-09 21:13:46,038 - logger - INFO - Классификация: 'курс биткоина...' → currency (уверенность 0.00)
+2026-07-09 21:13:46,038 - logger - WARNING - Низкая уверенность классификации: 0.00, возвращаем 'other'
+2026-07-09 21:13:46,038 - logger - INFO - Пользователь 270319180: намерение 'other'
+2026-07-09 21:13:46,125 - logger - INFO - ➡️ Вход в add_to_context()
+2026-07-09 21:13:46,125 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 21:13:46,125 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 21:13:46,125 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 21:13:46,125 - logger - INFO - ✅ save_db() завершена за 0.000с
+2026-07-09 21:13:46,125 - logger - INFO - ✅ add_to_context() завершена за 0.000с
+2026-07-09 21:13:46,125 - logger - INFO - ➡️ Вход в get_full_context()
+2026-07-09 21:13:46,125 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 21:13:46,125 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 21:13:46,125 - logger - INFO - ✅ get_full_context() завершена за 0.000с
+2026-07-09 21:13:46,694 - logger - INFO - ➡️ Вход в add_to_context()
+2026-07-09 21:13:46,694 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 21:13:46,694 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 21:13:46,694 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 21:13:46,694 - logger - INFO - ✅ save_db() завершена за 0.001с
+2026-07-09 21:13:46,694 - logger - INFO - ✅ add_to_context() завершена за 0.001с
+2026-07-09 21:13:46,694 - logger - INFO - YandexGPT ответил: ```
+[{"text": "Извините, я не могу предоставить актуальный курс биткоина. Для этого вам нужно воспол...
+2026-07-09 21:13:46,694 - logger - INFO - Распарсено 1 задач
+2026-07-09 21:13:46,694 - logger - INFO - Задача 1/1: ['text']
+2026-07-09 21:13:46,695 - logger - INFO - ➡️ Вход в handle()
+2026-07-09 21:13:46,695 - logger - INFO - TextExecutor: отправка текста длиной 137 символов
+2026-07-09 21:13:46,807 - logger - INFO - ✅ handle() завершена за 0.112с
+2026-07-09 21:13:46,807 - logger - INFO - Пайплайн для 270319180 успешно выполнен
+2026-07-09 21:13:46,807 - aiogram.event - INFO - Update id=778791253 is handled. Duration 859 ms by bot id=8646365702
+2026-07-09 21:14:31,465 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 21:14:31,465 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 21:14:56,100 - logger - INFO - ➡️ Вход в load_db()
+2026-07-09 21:14:56,101 - logger - INFO - ✅ load_db() завершена за 0.000с
+2026-07-09 21:14:56,101 - logger - INFO - База данных загружена
+2026-07-09 21:14:56,101 - logger - INFO - Middleware защиты от спама подключён
+2026-07-09 21:14:56,101 - logger - INFO - Хендлеры зарегистрированы
+2026-07-09 21:14:56,101 - logger - INFO - TaskQueue: запущено 2 воркеров
+2026-07-09 21:14:56,101 - logger - INFO - TaskQueue запущена
+2026-07-09 21:14:56,101 - logger - INFO - AlertChecker запущен
+2026-07-09 21:14:56,101 - logger - INFO - Бот запущен
+2026-07-09 21:14:56,102 - aiogram.dispatcher - INFO - Start polling
+2026-07-09 21:14:56,102 - logger - INFO - TaskQueue: воркер Worker-1 запущен
+2026-07-09 21:14:56,102 - logger - INFO - TaskQueue: воркер Worker-2 запущен
+2026-07-09 21:14:56,294 - aiogram.dispatcher - INFO - Run polling for bot @CrazyRoot_bot id=8646365702 - 'CrazyLittleThingCalledLove'
+2026-07-09 21:15:00,433 - logger - INFO - ➡️ Вход в check_rate_limit()
+2026-07-09 21:15:00,434 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 21:15:00,434 - logger - INFO - ✅ save_db() завершена за 0.001с
+2026-07-09 21:15:00,434 - logger - INFO - ✅ check_rate_limit() завершена за 0.001с
+2026-07-09 21:15:00,703 - logger - INFO - Классификация: 'курс биткоина...' → currency (уверенность 0.00)
+2026-07-09 21:15:00,703 - logger - WARNING - Низкая уверенность классификации: 0.00, возвращаем 'other'
+2026-07-09 21:15:00,703 - logger - INFO - Пользователь 270319180: намерение 'other'
+2026-07-09 21:15:00,909 - logger - INFO - ➡️ Вход в add_to_context()
+2026-07-09 21:15:00,909 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 21:15:00,909 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 21:15:00,909 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 21:15:00,910 - logger - INFO - ✅ save_db() завершена за 0.001с
+2026-07-09 21:15:00,910 - logger - INFO - ✅ add_to_context() завершена за 0.001с
+2026-07-09 21:15:00,910 - logger - INFO - ➡️ Вход в get_full_context()
+2026-07-09 21:15:00,910 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 21:15:00,911 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 21:15:00,911 - logger - INFO - ✅ get_full_context() завершена за 0.000с
+2026-07-09 21:15:01,693 - logger - INFO - ➡️ Вход в add_to_context()
+2026-07-09 21:15:01,693 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 21:15:01,693 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 21:15:01,693 - logger - INFO - ➡️ Вход в save_db()
+2026-07-09 21:15:01,694 - logger - INFO - ✅ save_db() завершена за 0.000с
+2026-07-09 21:15:01,694 - logger - INFO - ✅ add_to_context() завершена за 0.001с
+2026-07-09 21:15:01,694 - logger - INFO - YandexGPT ответил: ```
+[{"text": "Извините, я не могу предоставить актуальный курс биткоина. Для этого вам нужно воспол...
+2026-07-09 21:15:01,694 - logger - INFO - Распарсено 1 задач
+2026-07-09 21:15:01,694 - logger - INFO - Задача 1/1: ['text']
+2026-07-09 21:15:01,694 - logger - INFO - ➡️ Вход в handle()
+2026-07-09 21:15:01,694 - logger - INFO - TextExecutor: отправка текста длиной 137 символов
+2026-07-09 21:15:01,695 - logger - INFO - AlertChecker запущен
+2026-07-09 21:15:01,804 - logger - INFO - ✅ handle() завершена за 0.110с
+2026-07-09 21:15:01,805 - logger - INFO - Пайплайн для 270319180 успешно выполнен
+2026-07-09 21:15:01,805 - aiogram.event - INFO - Update id=778791254 is handled. Duration 1375 ms by bot id=8646365702
+2026-07-09 21:16:01,695 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 21:16:01,695 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 21:17:01,670 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 21:17:01,670 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 21:18:01,671 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 21:18:01,671 - logger - INFO - ✅ get_user() завершена за 0.000с
+2026-07-09 21:19:01,672 - logger - INFO - ➡️ Вход в get_user()
+2026-07-09 21:19:01,672 - logger - INFO - ✅ get_user() завершена за 0.000с
