@@ -25,6 +25,7 @@ logger = logging.getLogger(__name__)
 def log_function_call(func: Callable) -> Callable:
     """
     Универсальный декоратор для логирования вызовов функций.
+    Автоматически определяет, синхронная функция или асинхронная.
     """
 
     @wraps(func)

@@ -8,8 +8,8 @@ from aiogram import Router, F
 from aiogram.fsm.context import FSMContext
 from aiogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 
-from database import add_alert, get_user, save_db
-from logger import log_info, log_error, log_warning, log_handler  # <-- ДОБАВЛЕН log_handler
+from database import add_alert
+from logger import log_function_call, log_info, log_error, log_warning, log_handler
 from services.currency_api import extract_currencies, get_exchange_rate
 from services.crypto_api import extract_crypto, get_crypto_price
 from states.currency import CurrencyStates
@@ -27,6 +27,7 @@ confirm_keyboard = InlineKeyboardMarkup(inline_keyboard=[
 
 # --- ОБРАБОТЧИК ВАЛЮТНЫХ ЗАПРОСОВ ---
 
+@log_function_call
 async def handle_currency_request(message: Message, text: str, state: FSMContext):
     """
     Обрабатывает запрос на получение курса валюты
@@ -71,6 +72,7 @@ async def handle_currency_request(message: Message, text: str, state: FSMContext
 
 # --- ОБРАБОТЧИК КРИПТОВАЛЮТНЫХ ЗАПРОСОВ ---
 
+@log_function_call
 async def handle_crypto_request(message: Message, text: str, state: FSMContext):
     """
     Обрабатывает запрос на получение курса криптовалюты
@@ -116,7 +118,7 @@ async def handle_crypto_request(message: Message, text: str, state: FSMContext):
 # --- FSM: ОЖИДАНИЕ ЦЕЛИ ---
 
 @router.message(CurrencyStates.waiting_for_target, F.text)
-@log_handler  # <-- ДОБАВЛЕН
+@log_handler
 async def process_target(message: Message, state: FSMContext):
     """
     Пользователь вводит целевую цену (для валюты или криптовалюты).
@@ -178,7 +180,6 @@ async def process_confirm_callback(callback: CallbackQuery, state: FSMContext):
     user_id = callback.from_user.id
     await callback.answer()
 
-    # Ручной лог для callback (т.к. log_handler не работает с callback)
     log_info(f"Callback от пользователя {user_id}: {callback.data}")
 
     if callback.data == "confirm_yes":
@@ -194,26 +195,18 @@ async def process_confirm_callback(callback: CallbackQuery, state: FSMContext):
             alert_type = "currency"
 
             if base and target_currency and target:
-                # === ПРОВЕРКА НА ДУБЛИ ===
-                user = get_user(user_id)
-                for alert in user.alerts:
-                    if (alert.get("active") and
-                        alert.get("type") == alert_type and
-                        alert.get("item") == item and
-                        alert.get("target") == target):
-                        await callback.message.edit_text(
-                            f"⚠️ Вы уже следите за курсом {item} с целью {target:.2f}. Повторная цель не создана."
-                        )
-                        await state.clear()
-                        return
-                # === КОНЕЦ ПРОВЕРКИ ===
+                added = await add_alert(user_id, item, target, alert_type=alert_type)
 
-                # Сохраняем цель
-                add_alert(user_id, item, target, alert_type=alert_type)
-                await callback.message.edit_text(
-                    f"✅ Готово! Я уведомлю вас, когда курс {base} к {target_currency} достигнет {target:.2f}."
-                )
-                log_info(f"Пользователь {user_id}: цель для {base}/{target_currency} установлена на {target:.2f}")
+                if added:
+                    await callback.message.edit_text(
+                        f"✅ Готово! Я уведомлю вас, когда курс {base} к {target_currency} достигнет {target:.2f}."
+                    )
+                    log_info(f"Пользователь {user_id}: цель для {base}/{target_currency} установлена на {target:.2f}")
+                else:
+                    await callback.message.edit_text(
+                        f"⚠️ Вы уже следите за курсом {item} с целью {target:.2f}. Повторная цель не создана."
+                    )
+                    log_info(f"Пользователь {user_id}: дубликат цели для {item}")
             else:
                 await callback.message.edit_text("❌ Что-то пошло не так. Попробуйте начать заново.")
 
@@ -221,30 +214,21 @@ async def process_confirm_callback(callback: CallbackQuery, state: FSMContext):
             # КРИПТОВАЛЮТА
             coin = data["coin"]
             target = data.get("target")
-            item = coin
             alert_type = "crypto"
 
             if coin and target:
-                # === ПРОВЕРКА НА ДУБЛИ ===
-                user = get_user(user_id)
-                for alert in user.alerts:
-                    if (alert.get("active") and
-                        alert.get("type") == alert_type and
-                        alert.get("item") == item and
-                        alert.get("target") == target):
-                        await callback.message.edit_text(
-                            f"⚠️ Вы уже следите за {coin} с целью {target:.2f}. Повторная цель не создана."
-                        )
-                        await state.clear()
-                        return
-                # === КОНЕЦ ПРОВЕРКИ ===
+                added = await add_alert(user_id, coin, target, alert_type=alert_type)
 
-                # Сохраняем цель
-                add_alert(user_id, coin, target, alert_type=alert_type)
-                await callback.message.edit_text(
-                    f"✅ Готово! Я уведомлю вас, когда {coin.title()} достигнет {target:.2f} USD."
-                )
-                log_info(f"Пользователь {user_id}: цель для {coin} установлена на {target:.2f} USD")
+                if added:
+                    await callback.message.edit_text(
+                        f"✅ Готово! Я уведомлю вас, когда {coin.title()} достигнет {target:.2f} USD."
+                    )
+                    log_info(f"Пользователь {user_id}: цель для {coin} установлена на {target:.2f} USD")
+                else:
+                    await callback.message.edit_text(
+                        f"⚠️ Вы уже следите за {coin} с целью {target:.2f}. Повторная цель не создана."
+                    )
+                    log_info(f"Пользователь {user_id}: дубликат цели для {coin}")
             else:
                 await callback.message.edit_text("❌ Что-то пошло не так. Попробуйте начать заново.")
 
@@ -261,14 +245,14 @@ async def process_confirm_callback(callback: CallbackQuery, state: FSMContext):
 # --- ОБРАБОТКА НЕКОРРЕКТНОГО ВВОДА В FSM ---
 
 @router.message(CurrencyStates.waiting_for_target)
-@log_handler  # <-- ДОБАВЛЕН
+@log_handler
 async def process_target_invalid(message: Message):
     """Если пользователь отправил не текст в состоянии waiting_for_target."""
     await message.answer("❌ Пожалуйста, введите число (например, 63000)")
 
 
 @router.message(CurrencyStates.waiting_for_confirmation)
-@log_handler  # <-- ДОБАВЛЕН
+@log_handler
 async def process_confirmation_invalid(message: Message):
     """Если пользователь отправил не текст в состоянии waiting_for_confirmation."""
     await message.answer("❌ Пожалуйста, используйте кнопки для подтверждения.")

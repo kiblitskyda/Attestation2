@@ -5,31 +5,35 @@
 """
 
 import asyncio
-from database import get_active_alerts, get_user, save_db
+from database import get_active_alerts, get_all_user_ids, deactivate_alerts_by_params
 from services.crypto_api import get_crypto_price
 from services.currency_api import get_exchange_rate
-from logger import log_info, log_error
+from logger import log_function_call, log_info, log_error
 
 
-async def alert_checker(bot):
+@log_function_call
+async def alert_checker(bot, stop_event: asyncio.Event):
     """
     Бесконечный цикл проверки целей для валют и криптовалют.
+    Останавливается при установке stop_event.
     """
     await asyncio.sleep(5)
     log_info("AlertChecker запущен")
 
-    while True:
-        await asyncio.sleep(60)
+    while not stop_event.is_set():
+        try:
+            await asyncio.wait_for(stop_event.wait(), timeout=60)
+            break
+        except asyncio.TimeoutError:
+            pass
 
         try:
-            from database import users_db
-            for user_id in list(users_db.keys()):
+            for user_id in get_all_user_ids():
                 alerts = get_active_alerts(user_id)
                 if not alerts:
                     continue
 
                 for alert in alerts:
-                    # Проверяем, что цель всё ещё активна
                     if not alert.get("active"):
                         continue
 
@@ -42,15 +46,9 @@ async def alert_checker(bot):
                         try:
                             current_rate = get_exchange_rate(base, target_currency)
                             if current_rate and current_rate >= target:
-                                # Деактивируем ВСЕ цели с такими же параметрами
-                                user = get_user(user_id)
-                                for i, a in enumerate(user.alerts):
-                                    if (a.get("active") and
-                                        a.get("type") == "currency" and
-                                        a.get("item") == item and
-                                        a.get("target") == target):
-                                        user.alerts[i]["active"] = False
-                                save_db()
+                                await deactivate_alerts_by_params(
+                                    user_id, "currency", item, target
+                                )
 
                                 await bot.send_message(
                                     user_id,
@@ -64,15 +62,9 @@ async def alert_checker(bot):
                     else:  # crypto
                         price = get_crypto_price(item)
                         if price and price >= target:
-                            # Деактивируем ВСЕ цели с такими же параметрами
-                            user = get_user(user_id)
-                            for i, a in enumerate(user.alerts):
-                                if (a.get("active") and
-                                    a.get("type") == "crypto" and
-                                    a.get("item") == item and
-                                    a.get("target") == target):
-                                    user.alerts[i]["active"] = False
-                            save_db()
+                            await deactivate_alerts_by_params(
+                                user_id, "crypto", item, target
+                            )
 
                             await bot.send_message(
                                 user_id,
@@ -83,3 +75,5 @@ async def alert_checker(bot):
 
         except Exception as e:
             log_error(f"Ошибка в alert_checker: {e}")
+
+    log_info("AlertChecker остановлен")

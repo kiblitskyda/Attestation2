@@ -1,13 +1,11 @@
 # services/classifier.py
 
 """
-Классификация намерений пользователя через YandexGPT.
+Классификация намерений пользователя через YandexGPT + fallback-словари.
 """
 
-from typing import Optional
-
 from core import sdk
-from logger import log_info, log_error, log_warning
+from logger import log_function_call, log_info, log_error, log_warning
 
 # Создаём классификатор один раз при импорте
 classifier = sdk.models.text_classifiers("yandexgpt").configure(
@@ -25,9 +23,28 @@ classifier = sdk.models.text_classifiers("yandexgpt").configure(
 )
 
 
+# Ключевые слова для быстрой проверки (без вызова YandexGPT)
+CRYPTO_KEYWORDS = [
+    "биткоин", "биткойн", "биток", "btc",
+    "эфир", "eth",
+    "usdt", "тетер", "tether",
+]
+
+CURRENCY_KEYWORDS = [
+    "доллар", "бакс",
+    "евро",
+    "рубль", "рубля", "рублей", "рублю",
+    "тенге",
+    "юань",
+    "гривна", "гривны",
+]
+
+
+@log_function_call
 async def classify_intent(text: str) -> str:
     """
     Классифицирует намерение пользователя по тексту.
+    Использует YandexGPT с fallback-словарями для валют и криптовалют.
 
     Args:
         text: Текст сообщения пользователя
@@ -35,16 +52,26 @@ async def classify_intent(text: str) -> str:
     Returns:
         Одно из: "currency", "crypto", "generate", "other"
     """
+    text_lower = text.lower()
+
+    # --- Шаг 1: проверка по словарям (быстрый и надёжный путь) ---
+    if any(word in text_lower for word in CRYPTO_KEYWORDS):
+        log_info(f"Классификация (словарь): '{text[:50]}...' → crypto")
+        return "crypto"
+
+    if any(word in text_lower for word in CURRENCY_KEYWORDS):
+        log_info(f"Классификация (словарь): '{text[:50]}...' → currency")
+        return "currency"
+
+    # --- Шаг 2: классификатор YandexGPT ---
     try:
         result = classifier.run(text)
-        # Берём первый (наиболее вероятный) результат
         if result and len(result) > 0:
             intent = result[0].label
             confidence = result[0].confidence
 
-            log_info(f"Классификация: '{text[:50]}...' → {intent} (уверенность {confidence:.2f})")
+            log_info(f"Классификация (GPT): '{text[:50]}...' → {intent} (уверенность {confidence:.2f})")
 
-            # Если уверенность ниже порога — возвращаем "other"
             if confidence < 0.5:
                 log_warning(f"Низкая уверенность классификации: {confidence:.2f}, возвращаем 'other'")
                 return "other"

@@ -118,7 +118,7 @@ class ImageExecutor(BaseExecutor):
         Вызывается воркером из очереди.
         """
         try:
-            image_bytes = generate(prompt)
+            image_bytes = await generate(prompt)  # ← добавлен await
             log_info(f"ImageExecutor: картинка сгенерирована, размер {len(image_bytes)} байт")
 
             image_file = BufferedInputFile(image_bytes, filename="generated.png")

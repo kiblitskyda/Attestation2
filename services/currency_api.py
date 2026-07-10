@@ -9,7 +9,10 @@ import re
 import requests
 
 from config import CURRENCY_API_KEY
-from logger import log_error
+from logger import log_function_call, log_error
+
+# Таймаут для HTTP-запросов (секунды)
+REQUEST_TIMEOUT = 10
 
 
 def extract_currencies(text: str) -> tuple:
@@ -40,13 +43,14 @@ def extract_currencies(text: str) -> tuple:
                 found_currencies.append(code)
 
     if len(found_currencies) == 0:
-        return "USD", "RUB"          # по умолчанию
+        return "USD", "RUB"
     elif len(found_currencies) == 1:
         return found_currencies[0], "RUB"
     else:
         return found_currencies[0], found_currencies[1]
 
 
+@log_function_call
 def get_exchange_rate(base_currency: str, target_currency: str) -> float:
     """
     Получает курс одной валюты к другой с помощью freecurrencyapi.com.
@@ -72,13 +76,21 @@ def get_exchange_rate(base_currency: str, target_currency: str) -> float:
     }
 
     try:
-        response = requests.get(url, params=params, proxies={"http": None, "https": None})
+        response = requests.get(
+            url,
+            params=params,
+            proxies={"http": None, "https": None},
+            timeout=REQUEST_TIMEOUT
+        )
         if response.status_code != 200:
             raise Exception(f"Ошибка запроса: {response.status_code}")
 
         data = response.json()
         return data['data'][target_currency]
 
-    except Exception as e:
+    except requests.Timeout:
+        log_error(f"Таймаут при получении курса {base_currency} → {target_currency}")
+        raise Exception(f"Таймаут запроса к API валют")
+    except requests.RequestException as e:
         log_error(f"Ошибка получения курса: {e}")
         raise

@@ -7,9 +7,10 @@
 
 from core import model
 from database import get_full_context, add_to_context
-from logger import log_error, log_info
+from logger import log_function_call, log_error, log_info
 
 
+@log_function_call
 async def get_multimodal_response(user_id: int, user_input: str) -> str:
     """
     Отправляет запрос в Yandex GPT с требованием вернуть JSON-массив.

@@ -9,7 +9,7 @@ from typing import Dict, Any, Callable, Awaitable
 
 from aiogram.types import Message
 
-from logger import log_info, log_error, log_warning
+from logger import log_function_call, log_info, log_error, log_warning
 
 
 class TaskQueue:
@@ -27,6 +27,7 @@ class TaskQueue:
         self.workers: list[asyncio.Task] = []
         self.is_running = False
 
+    @log_function_call
     async def start(self):
         """
         Запускает воркеры.
@@ -41,6 +42,7 @@ class TaskQueue:
         ]
         log_info(f"TaskQueue: запущено {self.num_workers} воркеров")
 
+    @log_function_call
     async def stop(self):
         """
         Останавливает воркеры (дожидается завершения текущих задач).
@@ -60,6 +62,7 @@ class TaskQueue:
 
         log_info("TaskQueue: все воркеры остановлены")
 
+    @log_function_call
     async def add_task(
         self,
         user_id: int,
@@ -87,6 +90,7 @@ class TaskQueue:
         })
         log_info(f"TaskQueue: задача {task_type} для пользователя {user_id} поставлена в очередь")
 
+    @log_function_call
     async def _worker(self, name: str):
         """
         Воркер: забирает задачи из очереди и выполняет их.
