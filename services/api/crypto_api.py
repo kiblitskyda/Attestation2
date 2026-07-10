@@ -5,7 +5,6 @@
 Содержит функции для получения курсов криптовалют и извлечения их из текста.
 """
 
-import re
 import requests
 
 from config import CRYPTO_API_URL, CRYPTO_CURRENCY
@@ -72,4 +71,3 @@ def get_crypto_price(crypto_id: str) -> float | None:
     except Exception as e:
         log_error(f"Неожиданная ошибка получения курса криптовалюты {crypto_id}: {e}")
         return None
-

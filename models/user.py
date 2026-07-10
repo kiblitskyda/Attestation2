@@ -1,4 +1,4 @@
-#models/user.py
+# models/user.py
 
 """
 Модель пользователя.
@@ -23,11 +23,11 @@ class User:
     """
 
     def __init__(
-        self,
-        system_prompt: str = DEFAULT_SYSTEM_PROMPT,
-        context: Optional[deque] = None,
-        role: str = "user",
-        alerts: Optional[List[Dict[str, Any]]] = None,
+            self,
+            system_prompt: str = DEFAULT_SYSTEM_PROMPT,
+            context: Optional[deque] = None,
+            role: str = "user",
+            alerts: Optional[List[Dict[str, Any]]] = None,
     ):
         self.system_prompt = system_prompt
         self.context = context if context is not None else deque(maxlen=MAX_CONTEXT_MESSAGES)
@@ -40,7 +40,7 @@ class User:
             "system_prompt": self.system_prompt,
             "context": list(self.context),
             "role": self.role,
-            "alerts": self.alerts,  # <-- НОВОЕ ПОЛЕ
+            "alerts": self.alerts,
         }
 
     @classmethod
@@ -50,6 +50,5 @@ class User:
             system_prompt=data.get("system_prompt", DEFAULT_SYSTEM_PROMPT),
             context=deque(data.get("context", []), maxlen=MAX_CONTEXT_MESSAGES),
             role=data.get("role", "user"),
-            alerts=data.get("alerts", []),  # <-- НОВОЕ ПОЛЕ
+            alerts=data.get("alerts", []),
         )
-

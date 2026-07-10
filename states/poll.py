@@ -11,8 +11,7 @@ class Poll(StatesGroup):
     """
     Группа состояний для анкетирования.
     """
-    name = State()       # ожидаем имя
-    age = State()        # ожидаем возраст
-    city = State()       # ожидаем город
-    activity = State()   # ожидаем деятельность
-
+    name = State()  # ожидаем имя
+    age = State()  # ожидаем возраст
+    city = State()  # ожидаем город
+    activity = State()  # ожидаем деятельность

@@ -9,8 +9,8 @@ from aiogram.filters import Command
 from aiogram.fsm.context import FSMContext
 from aiogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 
-from states.poll import Poll
 from logger import log_info
+from states.poll import Poll
 
 router = Router()
 
@@ -166,4 +166,3 @@ async def process_city_invalid(message: Message):
 async def process_activity_invalid(message: Message):
     """Если пользователь отправил не текст в состоянии Poll.activity."""
     await message.answer("❌ Пожалуйста, введите деятельность текстом.")
-

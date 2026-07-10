@@ -12,11 +12,11 @@ from aiogram.fsm.context import FSMContext
 from aiogram.types import Message
 
 from database import check_rate_limit
+from handlers.currency import handle_currency_request, handle_crypto_request
 from logger import log_info, log_warning, log_error, log_handler
-from services.dialog_service import get_multimodal_response
 from services.chain import build_chain
 from services.classifier import classify_intent
-from handlers.currency import handle_currency_request, handle_crypto_request
+from services.dialog_service import get_multimodal_response
 
 router = Router()
 
@@ -89,7 +89,7 @@ async def handle_multimodal(message: Message, state: FSMContext):
 
     # Запускаем обработку каждой задачи через цепочку
     for i, task in enumerate(tasks):
-        log_info(f"Задача {i+1}/{len(tasks)}: {list(task.keys()) if isinstance(task, dict) else 'не словарь'}")
+        log_info(f"Задача {i + 1}/{len(tasks)}: {list(task.keys()) if isinstance(task, dict) else 'не словарь'}")
         if not isinstance(task, dict):
             await message.answer(f"⚠️ Неизвестный формат задачи: {task}")
             continue
@@ -114,4 +114,3 @@ def _clean_ai_response(raw_string: str) -> str:
     except Exception as e:
         log_error(f"Ошибка очистки JSON: {e}")
     return "[]"
-

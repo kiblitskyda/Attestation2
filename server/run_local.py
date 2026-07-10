@@ -1,5 +1,5 @@
-#server/run_local
-#!/usr/bin/env python3
+# server/run_local
+# !/usr/bin/env python3
 
 """
 Запуск локального сервера генерации изображений — без Docker.
@@ -130,6 +130,6 @@ def main() -> None:
         "--host", args.host, "--port", str(args.port),
     ])
 
+
 if __name__ == "__main__":
     main()
-

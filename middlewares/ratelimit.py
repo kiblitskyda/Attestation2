@@ -24,10 +24,10 @@ class RateLimitMiddleware(BaseMiddleware):
         self.last_message_time: Dict[int, float] = {}
 
     async def __call__(
-        self,
-        handler: Callable[[Message, Dict[str, Any]], Awaitable[Any]],
-        event: Message,
-        data: Dict[str, Any]
+            self,
+            handler: Callable[[Message, Dict[str, Any]], Awaitable[Any]],
+            event: Message,
+            data: Dict[str, Any]
     ) -> Any:
         # Пропускаем callback-запросы
         if hasattr(event, 'callback_query') and event.callback_query:
@@ -51,4 +51,3 @@ class RateLimitMiddleware(BaseMiddleware):
             self.last_message_time[user_id] = current_time
 
         return await handler(event, data)
-

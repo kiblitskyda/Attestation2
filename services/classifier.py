@@ -22,7 +22,6 @@ classifier = sdk.models.text_classifiers("yandexgpt").configure(
     labels=["currency", "crypto", "generate", "other"]
 )
 
-
 # Ключевые слова для быстрой проверки (без вызова YandexGPT)
 CRYPTO_KEYWORDS = [
     "биткоин", "биткойн", "биток", "btc",
@@ -84,4 +83,3 @@ async def classify_intent(text: str) -> str:
     except Exception as e:
         log_error(f"Ошибка классификации: {e}")
         return "other"
-

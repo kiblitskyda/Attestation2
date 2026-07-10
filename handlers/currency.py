@@ -10,8 +10,8 @@ from aiogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, C
 
 from database import add_alert
 from logger import log_function_call, log_info, log_error, log_handler
-from services.api.currency_api import extract_currencies, get_exchange_rate
 from services.api.crypto_api import extract_crypto, get_crypto_price
+from services.api.currency_api import extract_currencies, get_exchange_rate
 from states.currency import CurrencyStates
 
 router = Router()
@@ -256,4 +256,3 @@ async def process_target_invalid(message: Message):
 async def process_confirmation_invalid(message: Message):
     """Если пользователь отправил не текст в состоянии waiting_for_confirmation."""
     await message.answer("❌ Пожалуйста, используйте кнопки для подтверждения.")
-

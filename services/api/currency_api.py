@@ -6,6 +6,7 @@
 """
 
 import re
+
 import requests
 
 from config import CURRENCY_API_KEY
@@ -94,4 +95,3 @@ def get_exchange_rate(base_currency: str, target_currency: str) -> float:
     except requests.RequestException as e:
         log_error(f"Ошибка получения курса: {e}")
         raise
-

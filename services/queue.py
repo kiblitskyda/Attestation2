@@ -37,7 +37,7 @@ class TaskQueue:
 
         self.is_running = True
         self.workers = [
-            asyncio.create_task(self._worker(f"Worker-{i+1}"))
+            asyncio.create_task(self._worker(f"Worker-{i + 1}"))
             for i in range(self.num_workers)
         ]
         log_info(f"TaskQueue: запущено {self.num_workers} воркеров")
@@ -63,12 +63,12 @@ class TaskQueue:
 
     @log_function_call
     async def add_task(
-        self,
-        user_id: int,
-        message: Message,
-        task_type: str,
-        data: Any,
-        handler: Callable[[Message, Any], Awaitable[None]]
+            self,
+            user_id: int,
+            message: Message,
+            task_type: str,
+            data: Any,
+            handler: Callable[[Message, Any], Awaitable[None]]
     ):
         """
         Добавляет задачу в очередь.
@@ -134,4 +134,3 @@ class TaskQueue:
 
 # Глобальный экземпляр очереди (создаётся один раз при импорте)
 task_queue = TaskQueue(num_workers=2)
-

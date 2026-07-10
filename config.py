@@ -7,6 +7,7 @@
 """
 
 import os
+
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -37,4 +38,3 @@ RATE_LIMIT_INTERVAL_SECONDS = 1.0
 CURRENCY_API_KEY = os.getenv("CURRENCY_API_KEY")
 CRYPTO_API_URL = "https://api.coingecko.com/api/v3/simple/price"
 CRYPTO_CURRENCY = "usd"
-

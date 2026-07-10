@@ -9,13 +9,13 @@ from config import RATE_LIMIT_INTERVAL_SECONDS
 from core import bot, dp
 from database import load_db
 from handlers.commands import router as commands_router
+from handlers.currency import router as currency_router
 from handlers.multimodal import router as multimodal_router
 from handlers.poll import router as poll_router
-from handlers.currency import router as currency_router
 from logger import log_info
 from middlewares.ratelimit import RateLimitMiddleware
-from services.queue import task_queue
 from services.alert_service import alert_checker
+from services.queue import task_queue
 
 
 async def main():
@@ -63,4 +63,3 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
-

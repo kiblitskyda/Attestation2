@@ -1,4 +1,4 @@
-#server/local_server
+# server/local_server
 
 import asyncio
 import base64
@@ -97,9 +97,9 @@ async def get_pipelines():
 
 @app.post("/key/api/v1/pipeline/run")
 async def run_pipeline(
-    background_tasks: BackgroundTasks,
-    pipeline_id: str = Form(...),
-    params: str = Form(...),
+        background_tasks: BackgroundTasks,
+        pipeline_id: str = Form(...),
+        params: str = Form(...),
 ):
     """
     Принимаем запрос на генерацию и сразу отдаём job_id, а саму картинку
@@ -195,4 +195,3 @@ def _run_pipeline(prompt: str, width: int, height: int, num_images: int) -> list
 async def health():
     """Проверка, что сервер жив и модель загружена."""
     return {"status": "ok", "model_loaded": pipeline is not None, "active_jobs": len(jobs)}
-

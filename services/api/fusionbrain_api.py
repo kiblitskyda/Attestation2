@@ -4,9 +4,10 @@
 Async-клиент для локального сервера генерации изображений.
 """
 
+import asyncio
 import base64
 import json
-import asyncio
+
 import aiohttp
 
 from config import LOCAL_SERVER_URL
@@ -80,7 +81,7 @@ async def generate(prompt: str) -> bytes:
 
             try:
                 async with session.get(
-                    f"{LOCAL_SERVER_URL}key/api/v1/pipeline/status/{job_id}"
+                        f"{LOCAL_SERVER_URL}key/api/v1/pipeline/status/{job_id}"
                 ) as resp:
                     status = await resp.json()
             except aiohttp.ClientError as e:
@@ -93,4 +94,3 @@ async def generate(prompt: str) -> bytes:
                 raise RuntimeError("Сервер вернул ошибку генерации")
 
             await asyncio.sleep(2)
-

@@ -1,4 +1,4 @@
-#database.py
+# database.py
 
 """
 Модуль для работы с базой данных бота.
@@ -16,7 +16,6 @@ from typing import Dict, Any, List
 from config import DB_FILE, RATE_LIMIT_MESSAGES_PER_HOUR
 from logger import log_function_call, log_info, log_warning
 from models.user import User
-
 
 # Основное хранилище данных в памяти
 users_db: Dict[int, User] = {}
@@ -211,9 +210,9 @@ async def add_alert(user_id: int, item: str, target: float, alert_type: str = "c
         # Проверка на дубликат
         for alert in user.alerts:
             if (alert.get("active") and
-                alert.get("type") == alert_type and
-                alert.get("item") == item and
-                alert.get("target") == target):
+                    alert.get("type") == alert_type and
+                    alert.get("item") == item and
+                    alert.get("target") == target):
                 log_info(f"Дубликат цели для {user_id}: {item} = {target} ({alert_type}) — не добавлен")
                 return False
 
@@ -261,13 +260,12 @@ async def deactivate_alerts_by_params(user_id: int, alert_type: str, item: str, 
         count = 0
         for i, a in enumerate(user.alerts):
             if (a.get("active") and
-                a.get("type") == alert_type and
-                a.get("item") == item and
-                a.get("target") == target):
+                    a.get("type") == alert_type and
+                    a.get("item") == item and
+                    a.get("target") == target):
                 user.alerts[i]["active"] = False
                 count += 1
         if count > 0:
             save_db()
             log_info(f"Деактивировано {count} целей для {user_id}: {item} = {target}")
         return count
-

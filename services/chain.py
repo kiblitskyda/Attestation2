@@ -11,9 +11,9 @@ from typing import Optional, Dict, Any
 
 from aiogram.types import Message, BufferedInputFile
 
+from logger import log_function_call, log_info, log_error
 from services.api.fusionbrain_api import generate
 from services.queue import task_queue
-from logger import log_function_call, log_info, log_error
 
 
 class BaseExecutor:
@@ -150,4 +150,3 @@ def build_chain() -> BaseExecutor:
     text_executor.set_next(image_executor)
 
     return text_executor
-
