@@ -15,3 +15,4 @@ class Poll(StatesGroup):
     age = State()        # ожидаем возраст
     city = State()       # ожидаем город
     activity = State()   # ожидаем деятельность
+

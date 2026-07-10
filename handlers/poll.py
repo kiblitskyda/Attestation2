@@ -22,7 +22,7 @@ cancel_keyboard = InlineKeyboardMarkup(inline_keyboard=[
 
 # --- ЗАПУСК ОПРОСА ---
 
-@router.message(Command("start"))
+@router.message(Command("poll"))
 async def cmd_start(message: Message, state: FSMContext):
     """
     Запускает опрос: переводит пользователя в состояние Poll.name
@@ -94,7 +94,6 @@ async def process_age(message: Message, state: FSMContext):
     """
     Сохраняет возраст, переходит к Poll.city.
     """
-    # Простая проверка на число
     if not message.text.isdigit():
         await message.answer("❌ Пожалуйста, введите число (например, 25).")
         return
@@ -127,10 +126,8 @@ async def process_activity(message: Message, state: FSMContext):
     """
     await state.update_data(activity=message.text)
 
-    # Получаем все данные
     data = await state.get_data()
 
-    # Формируем резюме
     summary = (
         "✅ **Спасибо! Вот ваши ответы:**\n\n"
         f"📌 Имя: {data.get('name', '—')}\n"
@@ -169,3 +166,4 @@ async def process_city_invalid(message: Message):
 async def process_activity_invalid(message: Message):
     """Если пользователь отправил не текст в состоянии Poll.activity."""
     await message.answer("❌ Пожалуйста, введите деятельность текстом.")
+

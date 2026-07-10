@@ -31,6 +31,7 @@ async def handle_start(message: Message):
         f"• 'Нарисуй закат на море'\n"
         f"• 'Расскажи про Париж и покажи Эйфелеву башню'\n\n"
         f"Команды:\n"
+        f"/poll — пройти анкету\n"
         f"/help — показать справку\n"
         f"/clean — очистить историю диалога"
     )
@@ -172,3 +173,4 @@ async def handle_alerts(message: Message):
     )
 
     log_info(f"Пользователь {user_id} запросил список целей")
+

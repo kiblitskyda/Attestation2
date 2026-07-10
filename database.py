@@ -11,10 +11,10 @@ import asyncio
 import json
 from collections import deque
 from datetime import datetime, timedelta
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any, List
 
-from config import DB_FILE, MAX_CONTEXT_MESSAGES, RATE_LIMIT_MESSAGES_PER_HOUR
-from logger import log_function_call, log_info, log_error, log_warning
+from config import DB_FILE, RATE_LIMIT_MESSAGES_PER_HOUR
+from logger import log_function_call, log_info, log_warning
 from models.user import User
 
 
@@ -270,3 +270,4 @@ async def deactivate_alerts_by_params(user_id: int, alert_type: str, item: str, 
             save_db()
             log_info(f"Деактивировано {count} целей для {user_id}: {item} = {target}")
         return count
+

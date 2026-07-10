@@ -1,4 +1,4 @@
-# services/fusionbrain_api.py
+# services/api/fusionbrain_api.py
 
 """
 Async-клиент для локального сервера генерации изображений.
@@ -93,3 +93,4 @@ async def generate(prompt: str) -> bytes:
                 raise RuntimeError("Сервер вернул ошибку генерации")
 
             await asyncio.sleep(2)
+

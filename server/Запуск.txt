@@ -1,0 +1,3 @@
+#server\запуск.txt
+python server/run_local.py --device cpu
+

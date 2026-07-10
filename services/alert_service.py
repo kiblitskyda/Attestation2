@@ -6,8 +6,8 @@
 
 import asyncio
 from database import get_active_alerts, get_all_user_ids, deactivate_alerts_by_params
-from services.crypto_api import get_crypto_price
-from services.currency_api import get_exchange_rate
+from services.api.crypto_api import get_crypto_price
+from services.api.currency_api import get_exchange_rate
 from logger import log_function_call, log_info, log_error
 
 
@@ -77,3 +77,4 @@ async def alert_checker(bot, stop_event: asyncio.Event):
             log_error(f"Ошибка в alert_checker: {e}")
 
     log_info("AlertChecker остановлен")
+

@@ -59,7 +59,6 @@ async def handle_multimodal(message: Message, state: FSMContext):
         return
 
     # 5. Для "generate" и "other" — мультимодальный пайплайн
-    # Показываем статус "печатает..."
     await message.bot.send_chat_action(chat_id=message.chat.id, action="typing")
 
     # Получаем JSON от YandexGPT
@@ -115,3 +114,4 @@ def _clean_ai_response(raw_string: str) -> str:
     except Exception as e:
         log_error(f"Ошибка очистки JSON: {e}")
     return "[]"
+

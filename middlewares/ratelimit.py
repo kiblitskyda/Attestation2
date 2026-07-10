@@ -51,3 +51,4 @@ class RateLimitMiddleware(BaseMiddleware):
             self.last_message_time[user_id] = current_time
 
         return await handler(event, data)
+

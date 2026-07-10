@@ -99,3 +99,4 @@ def log_error(message: str):
 
 def log_warning(message: str):
     logger.warning(message)
+

@@ -1,4 +1,4 @@
-# services/currency_api.py
+# services/api/currency_api.py
 
 """
 Модуль для работы с API валют (freecurrencyapi.com).
@@ -94,3 +94,4 @@ def get_exchange_rate(base_currency: str, target_currency: str) -> float:
     except requests.RequestException as e:
         log_error(f"Ошибка получения курса: {e}")
         raise
+

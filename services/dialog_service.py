@@ -76,3 +76,4 @@ async def get_multimodal_response(user_id: int, user_input: str) -> str:
         error_response = '[{"text": "❌ Произошла ошибка при обработке запроса. Попробуйте позже."}]'
         add_to_context(user_id, {"role": "assistant", "text": error_response})
         return error_response
+

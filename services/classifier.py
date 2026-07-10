@@ -84,3 +84,4 @@ async def classify_intent(text: str) -> str:
     except Exception as e:
         log_error(f"Ошибка классификации: {e}")
         return "other"
+

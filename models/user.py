@@ -52,3 +52,4 @@ class User:
             role=data.get("role", "user"),
             alerts=data.get("alerts", []),  # <-- НОВОЕ ПОЛЕ
         )
+

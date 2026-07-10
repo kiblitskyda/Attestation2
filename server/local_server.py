@@ -1,3 +1,5 @@
+#server/local_server
+
 import asyncio
 import base64
 import json
@@ -193,3 +195,4 @@ def _run_pipeline(prompt: str, width: int, height: int, num_images: int) -> list
 async def health():
     """Проверка, что сервер жив и модель загружена."""
     return {"status": "ok", "model_loaded": pipeline is not None, "active_jobs": len(jobs)}
+

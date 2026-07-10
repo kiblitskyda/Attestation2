@@ -24,3 +24,4 @@ model = sdk.models.completions(config.MODEL_NAME).configure(
     temperature=config.TEMPERATURE,
     max_tokens=config.MAX_TOKENS
 )
+

@@ -5,7 +5,7 @@
 """
 
 import asyncio
-from typing import Dict, Any, Callable, Awaitable
+from typing import Any, Callable, Awaitable
 
 from aiogram.types import Message
 
@@ -48,7 +48,6 @@ class TaskQueue:
         Останавливает воркеры (дожидается завершения текущих задач).
         """
         self.is_running = False
-        # Ждём, пока очередь опустеет
         while not self.queue.empty():
             await asyncio.sleep(0.5)
             log_info("TaskQueue: ожидаем завершения задач...")
@@ -99,7 +98,6 @@ class TaskQueue:
 
         while self.is_running:
             try:
-                # Берём задачу из очереди (с таймаутом, чтобы не блокировать остановку)
                 task = await asyncio.wait_for(self.queue.get(), timeout=1.0)
             except asyncio.TimeoutError:
                 continue
@@ -115,14 +113,12 @@ class TaskQueue:
 
                 log_info(f"TaskQueue: воркер {name} обрабатывает {task_type} для {user_id}")
 
-                # Выполняем задачу
                 await handler(message, data)
 
                 log_info(f"TaskQueue: воркер {name} завершил {task_type} для {user_id}")
 
             except Exception as e:
                 log_error(f"TaskQueue: ошибка в воркере {name}: {e}")
-                # Отправляем сообщение об ошибке
                 try:
                     await task["message"].answer(
                         f"❌ Ошибка при обработке задачи {task['task_type']}: {str(e)}"
@@ -138,3 +134,4 @@ class TaskQueue:
 
 # Глобальный экземпляр очереди (создаётся один раз при импорте)
 task_queue = TaskQueue(num_workers=2)
+

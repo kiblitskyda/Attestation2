@@ -1,4 +1,6 @@
+#server/run_local
 #!/usr/bin/env python3
+
 """
 Запуск локального сервера генерации изображений — без Docker.
 Работает на macOS, Linux и Windows. Нужен только Python 3.10–3.12.
@@ -31,7 +33,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-VENV = ROOT / ".venv"
+VENV = ROOT.parent / ".venv"
 
 # Короткое человеческое название устройства — для понятных сообщений.
 DEVICE_HELP = {
@@ -122,11 +124,12 @@ def main() -> None:
     print(f"\nПоднимаю сервер: http://localhost:{args.port}")
     print("При первом запуске скачается модель bk-sdm-small (~0.5 ГБ) — подождите минуту.")
     print("Остановить: Ctrl+C\n")
+
     run([
-        py, "-m", "uvicorn", "local_server:app",
+        py, "-m", "uvicorn", "server.local_server:app",
         "--host", args.host, "--port", str(args.port),
     ])
 
-
 if __name__ == "__main__":
     main()
+

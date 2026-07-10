@@ -1,3 +1,5 @@
+#server/requirements-server.txt
+
 # Библиотеки сервера — БЕЗ torch.
 # torch ставится отдельно: run_local.py подбирает сборку под вашу видеокарту.
 fastapi
@@ -7,3 +9,4 @@ transformers
 accelerate
 Pillow
 python-multipart
+

@@ -1,4 +1,4 @@
-# services/crypto_api.py
+# services/api/crypto_api.py
 
 """
 Модуль для работы с API криптовалют (CoinGecko).
@@ -72,3 +72,4 @@ def get_crypto_price(crypto_id: str) -> float | None:
     except Exception as e:
         log_error(f"Неожиданная ошибка получения курса криптовалюты {crypto_id}: {e}")
         return None
+
