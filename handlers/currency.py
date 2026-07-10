@@ -9,7 +9,7 @@ from aiogram.fsm.context import FSMContext
 from aiogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 
 from database import add_alert
-from logger import log_function_call, log_info, log_error, log_warning, log_handler
+from logger import log_function_call, log_info, log_error, log_handler
 from services.currency_api import extract_currencies, get_exchange_rate
 from services.crypto_api import extract_crypto, get_crypto_price
 from states.currency import CurrencyStates

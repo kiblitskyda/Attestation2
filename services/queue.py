@@ -9,7 +9,7 @@ from typing import Dict, Any, Callable, Awaitable
 
 from aiogram.types import Message
 
-from logger import log_function_call, log_info, log_error, log_warning
+from logger import log_function_call, log_info, log_error
 
 
 class TaskQueue:

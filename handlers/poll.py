@@ -5,12 +5,12 @@
 """
 
 from aiogram import Router, F
-from aiogram.filters import Command, StateFilter
+from aiogram.filters import Command
 from aiogram.fsm.context import FSMContext
 from aiogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 
 from states.poll import Poll
-from logger import log_info, log_error
+from logger import log_info
 
 router = Router()
 
