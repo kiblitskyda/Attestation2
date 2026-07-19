@@ -1,5 +1,39 @@
 # Secrets
 .env
-__init__.py
-__pycache__
-.idea
+.env.local
+.env.production
+
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Виртуальное окружение
+venv/
+.venv/
+ENV/
+env/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Логи и база данных
+*.log
+*.csv
+*.json
+*.db
+*.sqlite
+
+# Файлы ОС
+.DS_Store
+Thumbs.db
+
+# Прочее
+bot.log
+db_backup.json
