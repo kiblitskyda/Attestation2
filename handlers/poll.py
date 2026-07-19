@@ -51,7 +51,7 @@ async def cmd_cancel(message: Message, state: FSMContext):
 
     await state.clear()
     await message.answer(
-        "❌ Опрос отменён. Если захотите пройти снова — отправьте /start."
+        "❌ Опрос отменён. Если захотите пройти снова — отправьте /poll"
     )
     log_info(f"Пользователь {message.from_user.id} отменил опрос через команду")
 
@@ -70,7 +70,7 @@ async def process_cancel_poll(callback: CallbackQuery, state: FSMContext):
         return
 
     await state.clear()
-    await callback.message.edit_text("❌ Опрос отменён. Если захотите пройти снова — отправьте /start.")
+    await callback.message.edit_text("❌ Опрос отменён. Если захотите пройти снова — отправьте /poll")
     log_info(f"Пользователь {callback.from_user.id} отменил опрос через кнопку")
 
 

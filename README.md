@@ -28,4 +28,28 @@
 - `middlewares/` — middleware
 - `server/` — локальный сервер генерации изображений
 -
-- 
+
+1. models/user.py          → что такое пользователь
+2. database.py              → как хранить пользователей
+3. config.py + core.py      → откуда берутся настройки и кто создаёт бота
+4. logger.py                → как логировать
+
+5. services/classifier.py   → как понимать, чего хочет пользователь
+6. services/dialog_service.py → как общаться с YandexGPT
+
+7. services/chain.py        → как обрабатывать задачи (текст/картинка)
+8. services/queue.py        → как делать картинки в фоне
+9. services/api/fusionbrain_api.py → как генерировать картинки
+
+10. services/api/crypto_api.py + currency_api.py → курсы валют
+
+11. states/poll.py + states/currency.py → состояния для FSM
+12. handlers/poll.py + handlers/currency.py → обработка опроса и целей
+
+13. handlers/multimodal.py  → главный маршрутизатор запросов
+14. handlers/commands.py    → команды /start, /help, /stats, /alerts
+
+15. middlewares/ratelimit.py → защита от спама
+16. services/alert_service.py → фоновые уведомления
+
+17. main.py → точка входа
