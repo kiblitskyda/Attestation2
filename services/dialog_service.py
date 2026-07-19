@@ -6,7 +6,7 @@
 """
 
 from core import model
-from database import get_full_context, add_to_context
+from database import get_full_context, add_to_context, get_user
 from logger import log_function_call, log_error, log_info
 
 
@@ -46,11 +46,26 @@ async def get_multimodal_response(user_id: int, user_input: str) -> str:
         "Ответ: [{\"text\": \"Париж — столица Франции, известный своей архитектурой и культурой.\"}, {\"image\": \"Eiffel Tower in Paris at sunset, illuminated, beautiful sky\"}]"
     )
 
+    # === НОВЫЙ БЛОК: ДОБАВЛЯЕМ ДАННЫЕ ОПРОСА В СИСТЕМНЫЙ ПРОМПТ ===
+    user = get_user(user_id)
+    poll_data = user.poll_data
+
+    if poll_data and any(poll_data.values()):
+        system_prompt += (
+            "\n\nДанные о пользователе (из опроса):\n"
+            f"- Имя: {poll_data.get('name', 'не указано')}\n"
+            f"- Возраст: {poll_data.get('age', 'не указан')}\n"
+            f"- Город: {poll_data.get('city', 'не указан')}\n"
+            f"- Деятельность: {poll_data.get('activity', 'не указана')}\n"
+            "\nУчитывай эту информацию при общении. Обращайся по имени, адаптируй ответы под возраст, город и род занятий."
+        )
+        log_info(f"Данные опроса добавлены в системный промпт для {user_id}")
+    # === КОНЕЦ НОВОГО БЛОКА ===
+
     # Сохраняем сообщение пользователя в контекст
     add_to_context(user_id, {"role": "user", "text": user_input})
 
     # Получаем полный контекст (system + история диалога)
-    # Заменяем системный промпт на наш мультимодальный
     full_context = get_full_context(user_id)
     if full_context and full_context[0]["role"] == "system":
         # Меняем системный промпт на наш
@@ -76,3 +91,4 @@ async def get_multimodal_response(user_id: int, user_input: str) -> str:
         error_response = '[{"text": "❌ Произошла ошибка при обработке запроса. Попробуйте позже."}]'
         add_to_context(user_id, {"role": "assistant", "text": error_response})
         return error_response
+

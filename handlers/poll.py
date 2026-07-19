@@ -9,8 +9,9 @@ from aiogram.filters import Command
 from aiogram.fsm.context import FSMContext
 from aiogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 
-from logger import log_info
 from states.poll import Poll
+from database import get_user, save_db
+from logger import log_info, log_handler
 
 router = Router()
 
@@ -23,6 +24,7 @@ cancel_keyboard = InlineKeyboardMarkup(inline_keyboard=[
 # --- ЗАПУСК ОПРОСА ---
 
 @router.message(Command("poll"))
+@log_handler
 async def cmd_start(message: Message, state: FSMContext):
     """
     Запускает опрос: переводит пользователя в состояние Poll.name
@@ -40,6 +42,7 @@ async def cmd_start(message: Message, state: FSMContext):
 # --- ОТМЕНА ОПРОСА ЧЕРЕЗ КОМАНДУ ---
 
 @router.message(Command("cancel"))
+@log_handler
 async def cmd_cancel(message: Message, state: FSMContext):
     """
     Отменяет опрос через команду /cancel.
@@ -51,7 +54,7 @@ async def cmd_cancel(message: Message, state: FSMContext):
 
     await state.clear()
     await message.answer(
-        "❌ Опрос отменён. Если захотите пройти снова — отправьте /poll"
+        "❌ Опрос отменён. Если захотите пройти снова — отправьте /poll."
     )
     log_info(f"Пользователь {message.from_user.id} отменил опрос через команду")
 
@@ -59,6 +62,7 @@ async def cmd_cancel(message: Message, state: FSMContext):
 # --- ОТМЕНА ОПРОСА ЧЕРЕЗ КНОПКУ ---
 
 @router.callback_query(lambda c: c.data == "cancel_poll")
+@log_handler
 async def process_cancel_poll(callback: CallbackQuery, state: FSMContext):
     """
     Обрабатывает нажатие на кнопку 'Отменить опрос'.
@@ -70,13 +74,14 @@ async def process_cancel_poll(callback: CallbackQuery, state: FSMContext):
         return
 
     await state.clear()
-    await callback.message.edit_text("❌ Опрос отменён. Если захотите пройти снова — отправьте /poll")
+    await callback.message.edit_text("❌ Опрос отменён. Если захотите пройти снова — отправьте /poll.")
     log_info(f"Пользователь {callback.from_user.id} отменил опрос через кнопку")
 
 
 # --- ОБРАБОТЧИКИ СОСТОЯНИЙ ---
 
 @router.message(Poll.name, F.text)
+@log_handler
 async def process_name(message: Message, state: FSMContext):
     """
     Сохраняет имя, переходит к Poll.age.
@@ -90,6 +95,7 @@ async def process_name(message: Message, state: FSMContext):
 
 
 @router.message(Poll.age, F.text)
+@log_handler
 async def process_age(message: Message, state: FSMContext):
     """
     Сохраняет возраст, переходит к Poll.city.
@@ -107,6 +113,7 @@ async def process_age(message: Message, state: FSMContext):
 
 
 @router.message(Poll.city, F.text)
+@log_handler
 async def process_city(message: Message, state: FSMContext):
     """
     Сохраняет город, переходит к Poll.activity.
@@ -120,14 +127,31 @@ async def process_city(message: Message, state: FSMContext):
 
 
 @router.message(Poll.activity, F.text)
+@log_handler
 async def process_activity(message: Message, state: FSMContext):
     """
-    Сохраняет деятельность, выводит резюме и завершает опрос.
+    Сохраняет деятельность, сохраняет данные опроса в профиль пользователя,
+    выводит резюме и завершает опрос.
     """
     await state.update_data(activity=message.text)
 
+    # Получаем все данные из FSM
     data = await state.get_data()
+    user_id = message.from_user.id
 
+    # === НОВЫЙ БЛОК: СОХРАНЯЕМ ДАННЫЕ ОПРОСА В ПРОФИЛЬ ===
+    user = get_user(user_id)
+    user.poll_data = {
+        "name": data.get("name", ""),
+        "age": data.get("age", ""),
+        "city": data.get("city", ""),
+        "activity": data.get("activity", ""),
+    }
+    save_db()
+    log_info(f"Данные опроса сохранены для {user_id}: {user.poll_data}")
+    # === КОНЕЦ НОВОГО БЛОКА ===
+
+    # Формируем резюме
     summary = (
         "✅ **Спасибо! Вот ваши ответы:**\n\n"
         f"📌 Имя: {data.get('name', '—')}\n"
@@ -145,24 +169,28 @@ async def process_activity(message: Message, state: FSMContext):
 # --- ОБРАБОТКА НЕКОРРЕКТНОГО ВВОДА ---
 
 @router.message(Poll.name)
+@log_handler
 async def process_name_invalid(message: Message):
     """Если пользователь отправил не текст в состоянии Poll.name."""
     await message.answer("❌ Пожалуйста, введите имя текстом.")
 
 
 @router.message(Poll.age)
+@log_handler
 async def process_age_invalid(message: Message):
     """Если пользователь отправил не текст в состоянии Poll.age."""
     await message.answer("❌ Пожалуйста, введите возраст числом.")
 
 
 @router.message(Poll.city)
+@log_handler
 async def process_city_invalid(message: Message):
     """Если пользователь отправил не текст в состоянии Poll.city."""
     await message.answer("❌ Пожалуйста, введите город текстом.")
 
 
 @router.message(Poll.activity)
+@log_handler
 async def process_activity_invalid(message: Message):
     """Если пользователь отправил не текст в состоянии Poll.activity."""
     await message.answer("❌ Пожалуйста, введите деятельность текстом.")

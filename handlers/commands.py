@@ -4,13 +4,13 @@
 Обработчики команд: /start, /help, /clean, /stats, /alerts
 """
 
-import pandas as pd
 from aiogram import Router
 from aiogram.filters import Command
 from aiogram.types import Message
 
-from database import clear_context, get_context, get_active_alerts
+from database import clear_context, get_context, get_active_alerts, get_user, save_db
 from logger import log_info, log_handler
+import pandas as pd
 
 router = Router()
 
@@ -41,7 +41,8 @@ async def handle_start(message: Message):
         f"• Команда /alerts — список ваших целей\n\n"
         f"📊 **Опросы**\n"
         f"• Команда /poll — пройти анкету из 4 вопросов\n"
-        f"• После завершения — краткое резюме\n\n"
+        f"• После завершения — краткое резюме\n"
+        f"• Данные опроса используются для персонализации общения\n\n"
         f"📈 **Статистика**\n"
         f"• Команда /stats — статистика по вашим диалогам\n\n"
         f"📖 **Команды**\n"
@@ -49,7 +50,7 @@ async def handle_start(message: Message):
         f"/clean — очистить историю диалога\n"
         f"/alerts — список целей\n"
         f"/stats — статистика\n"
-        f"/poll — пройти опрос\n"
+        f"/poll — пройти опрос\n\n"
         f"💡 **Совет:** просто напишите мне что-нибудь, и я отвечу!"
     )
     log_info(f"Пользователь {message.from_user.id} запустил бота")
@@ -71,7 +72,8 @@ async def handle_help(message: Message):
         "/help — эта справка\n"
         "/clean — очистить историю диалога\n"
         "/stats — статистика по диалогам\n"
-        "/alerts — список активных целей\n\n"
+        "/alerts — список активных целей\n"
+        "/poll — пройти опрос (данные используются для персонализации)\n\n"
         "**Важно:** Я запоминаю историю диалога, чтобы отвечать связно. "
         "Если хотите начать новую тему — используйте /clean."
     )
@@ -80,10 +82,20 @@ async def handle_help(message: Message):
 @router.message(Command("clean"))
 @log_handler
 async def handle_clean(message: Message):
-    """Очищает историю диалога пользователя."""
+    """Очищает историю диалога и данные опроса пользователя."""
     user_id = message.from_user.id
+
+    # Очищаем контекст (было)
     clear_context(user_id)
-    await message.answer("🧹 История диалога очищена! Можно начинать новую тему.")
+
+    # === НОВЫЙ БЛОК: ОЧИЩАЕМ ДАННЫЕ ОПРОСА ===
+    user = get_user(user_id)
+    user.poll_data = {}
+    save_db()
+    log_info(f"Данные опроса очищены для {user_id}")
+    # === КОНЕЦ НОВОГО БЛОКА ===
+
+    await message.answer("🧹 История диалога и данные опроса очищены! Можно начинать новую тему.")
     log_info(f"Пользователь {user_id} очистил контекст")
 
 
@@ -190,3 +202,4 @@ async def handle_alerts(message: Message):
     )
 
     log_info(f"Пользователь {user_id} запросил список целей")
+

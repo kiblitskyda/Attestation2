@@ -20,19 +20,22 @@ class User:
         context (deque): История диалога
         role (str): Роль пользователя (всегда "user")
         alerts (List[Dict[str, Any]]): Список целей для уведомлений
+        poll_data (Dict[str, Any]): Данные из опроса (имя, возраст, город, деятельность)
     """
 
     def __init__(
-            self,
-            system_prompt: str = DEFAULT_SYSTEM_PROMPT,
-            context: Optional[deque] = None,
-            role: str = "user",
-            alerts: Optional[List[Dict[str, Any]]] = None,
+        self,
+        system_prompt: str = DEFAULT_SYSTEM_PROMPT,
+        context: Optional[deque] = None,
+        role: str = "user",
+        alerts: Optional[List[Dict[str, Any]]] = None,
+        poll_data: Optional[Dict[str, Any]] = None,
     ):
         self.system_prompt = system_prompt
         self.context = context if context is not None else deque(maxlen=MAX_CONTEXT_MESSAGES)
         self.role = role
         self.alerts = alerts if alerts is not None else []
+        self.poll_data = poll_data if poll_data is not None else {}
 
     def to_dict(self) -> Dict[str, Any]:
         """Превращает объект User в словарь для сохранения в JSON."""
@@ -41,6 +44,7 @@ class User:
             "context": list(self.context),
             "role": self.role,
             "alerts": self.alerts,
+            "poll_data": self.poll_data,
         }
 
     @classmethod
@@ -51,4 +55,5 @@ class User:
             context=deque(data.get("context", []), maxlen=MAX_CONTEXT_MESSAGES),
             role=data.get("role", "user"),
             alerts=data.get("alerts", []),
+            poll_data=data.get("poll_data", {}),
         )
